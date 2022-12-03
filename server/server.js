@@ -14,8 +14,8 @@ const main = () => {
     process.exit(1);
   } else {
     console.log(process.env.MONGO_URL);
-    console.log("Connected to database");
     mongoose.connect(process.env.MONGO_URL);
+    console.log("Connected to database");
   }
 };
 
