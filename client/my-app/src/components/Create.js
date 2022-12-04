@@ -1,8 +1,10 @@
 import React, { useState } from "react";
+// import { useNavigate } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import "../App.css";
 
 const Create = () => {
+  // const navigate = useNavigate();
   const [inputValue, setInputValue] = useState({
     name: "",
     position: "",
@@ -15,7 +17,7 @@ const Create = () => {
 
   const saveData = async (e) => {
     e.preventDefault(e);
-    const response = await fetch("http://localhost:8080/api/", {
+    const response = await fetch("http://localhost:8080/api/save/newemployee", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
@@ -34,6 +36,7 @@ const Create = () => {
     if (name !== "" || position !== "" || level !== "") {
       setInputValue({ name: "", position: "", level: "" });
     }
+    // navigate("/");
   };
 
   return (
