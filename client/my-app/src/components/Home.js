@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Table from "react-bootstrap/Table";
 import TableRow from "../components/TableRow";
+import SortList from "../components/SortList";
 
 const Home = () => {
   const [data, setData] = useState([]);
@@ -16,11 +17,18 @@ const Home = () => {
       setData(data);
     };
     fetchData();
-  }, [data]);
+  }, []);
 
+  const sortData = (data) => {
+    console.log(data);
+    setData(data);
+  };
+  console.log(data);
   return (
     <div>
       <h1 style={{ textAlign: "center" }}>My Employees Data 🙃🍀</h1>
+      <p>Sort List </p>
+      <SortList updateData={sortData} />
       <Table striped>
         <thead>
           <tr>

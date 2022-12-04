@@ -19,7 +19,7 @@ const TableRow = ({ employee, employees, myKey }) => {
       // newList.splice(myKey, 1);
     }
   };
-  console.log(employee);
+
   return (
     <tr>
       <td>{employee.firstName}</td>

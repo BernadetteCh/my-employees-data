@@ -50,6 +50,17 @@ router.put("/edit/:id", async (req, res) => {
   }
 });
 
+router.get("/:sortValue", async (req, res) => {
+  try {
+    await Employee.find()
+      .sort({ [req.params.sortValue]: 1 })
+      .then((result) => {
+        res.status(200).json(result);
+      });
+  } catch (err) {
+    res.send(400).send();
+  }
+});
 router.get("/edit/:id", async (req, res) => {
   try {
     await Employee.findById({ _id: req.params.id }).then((result) => {
