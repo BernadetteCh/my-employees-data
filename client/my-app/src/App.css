@@ -7,6 +7,9 @@
   justify-content: space-between;
   padding: 10px 40px 10px 20px;
 }
+.logos {
+  max-width: 40%;
+}
 .navbar-link:hover {
   color: rgb(101, 101, 101);
 }
