@@ -14,6 +14,7 @@ const Create = () => {
   };
 
   const saveData = async (e) => {
+    e.preventDefault(e);
     const response = await fetch("http://localhost:8080/api/", {
       method: "POST",
       headers: {
@@ -26,7 +27,9 @@ const Create = () => {
 
     if (!response.ok) {
       console.log(`Error: ${response.status}`);
+      console.log(`${response.statusText}`);
     }
+
     const { name, position, level } = inputValue;
     if (name !== "" || position !== "" || level !== "") {
       setInputValue({ name: "", position: "", level: "" });
