@@ -1,3 +1,13 @@
+label {
+  display: block;
+  margin: 10px 0px 10px 0px;
+}
+input {
+  border-radius: 4px;
+  border: 1px solid grey;
+  padding: 6px;
+  width: 50%;
+}
 .navbar-link {
   color: grey;
   text-decoration: none;
@@ -9,6 +19,14 @@
 }
 .logos {
   max-width: 40%;
+}
+
+.form-create {
+  padding-left: 50px;
+}
+.submit-button {
+  display: block;
+  margin-top: 20px;
 }
 .navbar-link:hover {
   color: rgb(101, 101, 101);
