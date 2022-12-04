@@ -20,10 +20,9 @@ const Home = () => {
   }, []);
 
   const sortData = (data) => {
-    console.log(data);
     setData(data);
   };
-  console.log(data);
+
   return (
     <div>
       <h1 style={{ textAlign: "center" }}>My Employees Data 🙃🍀</h1>

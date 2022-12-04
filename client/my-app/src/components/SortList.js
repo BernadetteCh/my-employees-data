@@ -8,7 +8,6 @@ const SortList = ({ updateData }) => {
     if (!response.ok) {
       console.log(`Error : ${response.status} ${response.statusText}`);
     }
-    console.log(data);
     updateData(data);
   };
 
