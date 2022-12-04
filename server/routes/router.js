@@ -2,7 +2,16 @@ const express = require("express");
 const router = express.Router();
 const Employee = require("../db/employeeSchema");
 
-router.post("/", async (req, res) => {
+router.get("/", async (req, res) => {
+  await Employee.find()
+    .sort({ name: 1 })
+    .lean()
+    .then((result) => {
+      res.status(200).send(result);
+    });
+});
+
+router.post("/save/newemployee", async (req, res) => {
   const { name, position, level } = req.body.inputValue;
   const newEmployee = new Employee({
     name: name,
