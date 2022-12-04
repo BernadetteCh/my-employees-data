@@ -13,8 +13,24 @@ const Create = () => {
     setInputValue((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const saveData = (e) => {
-    e.preventDefault();
+  const saveData = async (e) => {
+    const response = await fetch("http://localhost:8080/api/", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify({
+        inputValue,
+      }),
+    });
+
+    if (!response.ok) {
+      console.log(`Error: ${response.status}`);
+    }
+    const { name, position, level } = inputValue;
+    if (name !== "" || position !== "" || level !== "") {
+      setInputValue({ name: "", position: "", level: "" });
+    }
   };
 
   return (
