@@ -5,9 +5,8 @@ const Employee = require("../db/employeeSchema");
 router.get("/", async (req, res) => {
   await Employee.find()
     .sort({ name: 1 })
-    .lean()
     .then((result) => {
-      res.status(200).send(result);
+      res.status(200).json(result);
     });
 });
 
@@ -23,6 +22,17 @@ router.post("/save/newemployee", async (req, res) => {
     res.status(200).send();
   } catch (error) {
     res.status(400).send(error);
+  }
+});
+
+router.delete("/delete/:id", async (req, res) => {
+  try {
+    await Employee.findOneAndDelete({ _id: req.params.id });
+    await Employee.find({}).then((result) => {
+      res.status(200).json(result);
+    });
+  } catch (err) {
+    res.status(400).send(err);
   }
 });
 
