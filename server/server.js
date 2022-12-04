@@ -1,8 +1,10 @@
 const express = require("express");
 const app = express();
 const port = 8080;
+const cors = require("cors");
 
 app.use(express.json());
+app.use(cors());
 
 require("dotenv").config();
 const mongoose = require("mongoose");
@@ -20,10 +22,6 @@ const main = () => {
 };
 
 main();
-
-app.get("/", (req, res) => {
-  res.send("Hi from server");
-});
 
 const employeesRouter = require("./routes/router");
 app.use("/api", employeesRouter);
