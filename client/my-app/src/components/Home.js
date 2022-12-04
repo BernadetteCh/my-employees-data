@@ -7,7 +7,7 @@ const Home = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch("http://localhost:8080/api/");
+      const response = await fetch("http://localhost:8080/api");
       const data = await response.json();
 
       if (!response.ok) {
@@ -16,7 +16,7 @@ const Home = () => {
       setData(data);
     };
     fetchData();
-  }, []);
+  }, [data]);
 
   return (
     <div>
@@ -33,8 +33,15 @@ const Home = () => {
         <tbody>
           {data === []
             ? console.log("..loading")
-            : data.map((employee) => {
-                return <TableRow employee={employee} key={employee.id} />;
+            : data.map((employee, index) => {
+                return (
+                  <TableRow
+                    employee={employee}
+                    employees={data}
+                    key={employee._id}
+                    myKey={index}
+                  />
+                );
               })}
         </tbody>
       </Table>
