@@ -50,11 +50,29 @@ const Edit = () => {
     <div className="ms-5 mt-5">
       <h2>Edit an Employee</h2>
       <form>
-        <label className="d-block">Name:</label>
+        <label className="d-block">FirstName:</label>
         <input
           type="text"
-          name="name"
-          value={data.name}
+          name="firstName"
+          value={data.firstName}
+          onChange={(e) =>
+            editEmployeeData({ [e.target.name]: e.target.value })
+          }
+        ></input>
+        <label className="d-block">SecondName:</label>
+        <input
+          type="text"
+          name="secondName"
+          value={data.secondName}
+          onChange={(e) =>
+            editEmployeeData({ [e.target.name]: e.target.value })
+          }
+        ></input>
+        <label className="d-block">LastName:</label>
+        <input
+          type="text"
+          name="lastName"
+          value={data.lastName}
           onChange={(e) =>
             editEmployeeData({ [e.target.name]: e.target.value })
           }

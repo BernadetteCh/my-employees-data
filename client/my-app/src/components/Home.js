@@ -24,7 +24,9 @@ const Home = () => {
       <Table striped>
         <thead>
           <tr>
-            <th>Name</th>
+            <th>FirstName</th>
+            <th>SecondName</th>
+            <th>LastName</th>
             <th>Position</th>
             <th>Level</th>
             <th>Action</th>

@@ -6,7 +6,9 @@ import "../App.css";
 const Create = () => {
   // const navigate = useNavigate();
   const [inputValue, setInputValue] = useState({
-    name: "",
+    firstName: "",
+    secondName: "",
+    lastName: "",
     position: "",
     level: "",
   });
@@ -32,9 +34,21 @@ const Create = () => {
       console.log(`${response.statusText}`);
     }
 
-    const { name, position, level } = inputValue;
-    if (name !== "" || position !== "" || level !== "") {
-      setInputValue({ name: "", position: "", level: "" });
+    const { firstName, secondName, lastName, position, level } = inputValue;
+    if (
+      firstName !== "" ||
+      secondName !== "" ||
+      lastName !== "" ||
+      position !== "" ||
+      level !== ""
+    ) {
+      setInputValue({
+        firstName: "",
+        secondName: "",
+        lastName: "",
+        position: "",
+        level: "",
+      });
     }
     // navigate("/");
   };
@@ -43,11 +57,25 @@ const Create = () => {
     <div className="form-create">
       <h2>Create a new Employee</h2>
       <form>
-        <label className="d-block">Name:</label>
+        <label className="d-block">FirstName:</label>
         <input
           type="text"
-          name="name"
-          value={inputValue.name}
+          name="firstName"
+          value={inputValue.firstName}
+          onChange={upDateInputValue}
+        ></input>
+        <label className="d-block">SecondName:</label>
+        <input
+          type="text"
+          name="secondName"
+          value={inputValue.secondName}
+          onChange={upDateInputValue}
+        ></input>
+        <label className="d-block">LastName:</label>
+        <input
+          type="text"
+          name="lastName"
+          value={inputValue.lastName}
           onChange={upDateInputValue}
         ></input>
         <label className="d-block">Position:</label>

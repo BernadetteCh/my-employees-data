@@ -4,16 +4,19 @@ const Employee = require("../db/employeeSchema");
 
 router.get("/", async (req, res) => {
   await Employee.find()
-    .sort({ name: 1 })
+    .sort({ firstName: 1 })
     .then((result) => {
       res.status(200).json(result);
     });
 });
 
 router.post("/save/newemployee", async (req, res) => {
-  const { name, position, level } = req.body.inputValue;
+  const { firstName, secondName, lastName, position, level } =
+    req.body.inputValue;
   const newEmployee = new Employee({
-    name: name,
+    firstName: firstName,
+    secondName: secondName,
+    lastName: lastName,
     position: position,
     level: level,
   });
@@ -26,11 +29,19 @@ router.post("/save/newemployee", async (req, res) => {
 });
 
 router.put("/edit/:id", async (req, res) => {
-  const { name, position, level } = req.body.data;
+  const { firstName, secondName, lastName, position, level } = req.body.data;
   try {
     await Employee.findByIdAndUpdate(
       { _id: req.params.id },
-      { $set: { name: name, position: position, level: level } }
+      {
+        $set: {
+          firstName: firstName,
+          secondName: secondName,
+          lastName: lastName,
+          position: position,
+          level: level,
+        },
+      }
     ).then((result) => {
       res.status(200).json(result);
     });
