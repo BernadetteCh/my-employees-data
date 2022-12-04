@@ -2,7 +2,7 @@ import React from "react";
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
 
-const TableRow = ({ employee, employees, myKey }) => {
+const TableRow = ({ employee, employees, myKey, updateData }) => {
   const deleteEmployee = async (e) => {
     const id = employee._id;
     const response = await fetch(`http://localhost:8080/api/delete/${id}`, {
@@ -15,8 +15,9 @@ const TableRow = ({ employee, employees, myKey }) => {
     if (!response.ok) {
       console.log(`Error: ${response.status} ${response.statusText}`);
     } else {
-      // const newList = [...employees];
-      // newList.splice(myKey, 1);
+      const newList = [...employees];
+      newList.splice(myKey, 1);
+      updateData(newList);
     }
   };
 

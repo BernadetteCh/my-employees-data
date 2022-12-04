@@ -19,7 +19,7 @@ const Home = () => {
     fetchData();
   }, []);
 
-  const sortData = (data) => {
+  const updateData = (data) => {
     setData(data);
   };
 
@@ -27,7 +27,7 @@ const Home = () => {
     <div>
       <h1 style={{ textAlign: "center" }}>My Employees Data 🙃🍀</h1>
       <p>Sort List </p>
-      <SortList updateData={sortData} />
+      <SortList updateData={updateData} />
       <Table striped>
         <thead>
           <tr>
@@ -49,6 +49,7 @@ const Home = () => {
                     employees={data}
                     key={employee._id}
                     myKey={index}
+                    updateData={updateData}
                   />
                 );
               })}
