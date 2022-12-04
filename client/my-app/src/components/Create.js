@@ -13,7 +13,9 @@ const Create = () => {
         <input type="text"></input>
         <label>Level:</label>
         <input type="text"></input>
-        <Button className="submit-button">Create new Employee</Button>
+        <Button type="submit" className="submit-button">
+          Create new Employee
+        </Button>
       </form>
     </div>
   );
