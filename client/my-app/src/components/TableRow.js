@@ -1,6 +1,6 @@
 import React from "react";
 import Button from "react-bootstrap/Button";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const TableRow = ({ employee, employees, myKey }) => {
   const deleteEmployee = async (e) => {
@@ -19,13 +19,14 @@ const TableRow = ({ employee, employees, myKey }) => {
       // newList.splice(myKey, 1);
     }
   };
+
   return (
     <tr>
       <td>{employee.name}</td>
       <td>{employee.position}</td>
       <td>{employee.level}</td>
       <td>
-        <Button variant="primary">Edit</Button> |{" "}
+        <Link to={`/edit/${employee._id}`}>Edit</Link> |
         <Button variant="secondary" onClick={deleteEmployee}>
           Delete
         </Button>
