@@ -4,7 +4,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Navbar from "./components/Navbar";
 import Create from "./components/Create";
 import Home from "./components/Home";
-import Delete from "./components/Delete";
 import Edit from "./components/Edit";
 import "./App.css";
 
@@ -17,7 +16,6 @@ function App() {
           <Route path="/" element={<Home />}></Route>
           <Route path="/create" element={<Create />}></Route>
           <Route path="/edit" element={<Edit />}></Route>
-          <Route path="/delete" element={<Delete />}></Route>
         </Routes>
       </BrowserRouter>
     </div>
