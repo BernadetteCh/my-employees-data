@@ -37,20 +37,28 @@ const Home = () => {
     fetchData();
   }, []);
 
-  const updateData = (data) => {
+  const updateEmployeeData = (data) => {
     setEmployeeData(data);
   };
-  console.log(equipmentData);
+  const updateEquipmentData = (data) => {
+    setEquipmentData(data);
+  };
   return (
     <div>
       <h1 style={{ textAlign: "center" }}>My Employees Data 🙃🍀</h1>
       <p>Sort List </p>
-      <SortList updateData={updateData} />
+      <SortList updateData={updateEmployeeData} />
       <p>Filter List</p>
-      <FilterList employees={employeeData} updateData={updateData} />
-      <EmployeeTable employeesData={employeeData} renderData={updateData} />
+      <FilterList employees={employeeData} updateData={updateEmployeeData} />
+      <EmployeeTable
+        employeesData={employeeData}
+        renderData={updateEmployeeData}
+      />
       <h2>Equipment Table</h2>
-      <EquipmentTable equipmentData={equipmentData} />
+      <EquipmentTable
+        equipmentData={equipmentData}
+        updateData={updateEquipmentData}
+      />
     </div>
   );
 };
