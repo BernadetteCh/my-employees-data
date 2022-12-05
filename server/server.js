@@ -23,7 +23,9 @@ const main = () => {
 
 main();
 
-const employeesRouter = require("./routes/router");
+const employeesRouter = require("./routes/employee-router");
 app.use("/api", employeesRouter);
+const equipmentRouter = require("./routes/equipment-router");
+app.use("/api/equipment", equipmentRouter);
 app.listen(port);
 console.log("http://localhost:" + port);

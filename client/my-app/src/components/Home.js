@@ -1,63 +1,52 @@
 import React, { useState, useEffect } from "react";
-import Table from "react-bootstrap/Table";
-import TableRow from "../components/TableRow";
+import EmployeeTable from "./EmployeeTable";
 import SortList from "../components/SortList";
 import FilterList from "../components/FilterList";
+import EquipmentTable from "./EquipmentTable";
+
+// const fetchEmployeesData = async (dataSetter) => {
+//   const response = await fetch("http://localhost:8080/api");
+//   const data = await response.json();
+
+//   if (!response.ok) {
+//     console.log(`Error:${response.status} ${response.statusText}`);
+//   }
+//   dataSetter(data);
+// };
+
+const fetchEquipmentData = async (dataSetter) => {
+  const response = await fetch("http://localhost:8080/api/equipment");
+  const data = await response.json();
+
+  if (!response.ok) {
+    console.log(`Error: ${response.status} ${response.statusText}`);
+  }
+  dataSetter(data);
+};
 
 const Home = () => {
-  const [data, setData] = useState([]);
+  const [employeeData, setEmployeeData] = useState([]);
+  const [equipmentData, setEquipmentData] = useState([]);
 
   useEffect(() => {
-    const fetchData = async () => {
-      const response = await fetch("http://localhost:8080/api");
-      const data = await response.json();
-
-      if (!response.ok) {
-        console.log(`Error:${response.status} ${response.statusText}`);
-      }
-      setData(data);
-    };
-    fetchData();
+    // fetchEmployeesData(setEmployeeData);
+    fetchEquipmentData(setEquipmentData);
   }, []);
 
   const updateData = (data) => {
-    setData(data);
+    setEmployeeData(data);
   };
-
+  console.log(equipmentData);
   return (
     <div>
       <h1 style={{ textAlign: "center" }}>My Employees Data 🙃🍀</h1>
       <p>Sort List </p>
       <SortList updateData={updateData} />
       <p>Filter List</p>
-      <FilterList employees={data} updateData={updateData} />
-      <Table striped>
-        <thead>
-          <tr>
-            <th>FirstName</th>
-            <th>SecondName</th>
-            <th>LastName</th>
-            <th>Position</th>
-            <th>Level</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          {data === []
-            ? console.log("..loading")
-            : data.map((employee, index) => {
-                return (
-                  <TableRow
-                    employee={employee}
-                    employees={data}
-                    key={employee._id}
-                    myKey={index}
-                    updateData={updateData}
-                  />
-                );
-              })}
-        </tbody>
-      </Table>
+      <FilterList employees={employeeData} updateData={updateData} />
+      <EmployeeTable employeesData={employeeData} renderData={updateData} />
+      <h2>Equipment Table</h2>
+      <EquipmentTable equipmentData={equipmentData} />
     </div>
   );
 };
