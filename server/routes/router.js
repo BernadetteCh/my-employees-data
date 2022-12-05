@@ -7,6 +7,9 @@ router.get("/", async (req, res) => {
     .sort({ firstName: 1 })
     .then((result) => {
       res.status(200).json(result);
+    })
+    .catch((error) => {
+      res.status(400).json({ error });
     });
 });
 
@@ -45,53 +48,49 @@ router.put("/edit/:id", async (req, res) => {
     ).then((result) => {
       res.status(200).json(result);
     });
-  } catch (err) {
-    res.status(404).send();
+  } catch (error) {
+    res.status(404).json({ error });
   }
 });
 router.post("/filter", async (req, res) => {
-  try {
-    await Employee.find({
-      [req.body.filterValue]: { $regex: req.body.inputValue },
-    }).then((result) => {
+  await Employee.find({
+    [req.body.filterValue]: { $regex: req.body.inputValue },
+  })
+    .then((result) => {
       res.status(200).send(result);
-    });
-  } catch (err) {
-    res.status(404).send();
-  }
+    })
+    .catch((error) => res.status(400).json({ error }));
 });
 
 router.get("/:sortValue", async (req, res) => {
-  console.log(req.params.sortValue);
-  try {
-    await Employee.find()
-      .sort({ [req.params.sortValue]: 1 })
-      .then((result) => {
-        res.status(200).json(result);
-      });
-  } catch (err) {
-    res.send(400).send();
-  }
+  await Employee.find()
+    .sort({ [req.params.sortValue]: 1 })
+    .then((result) => {
+      res.status(200).json(result);
+    })
+    .catch((error) => {
+      res.send(400).json({ error });
+    });
 });
 router.get("/edit/:id", async (req, res) => {
-  try {
-    await Employee.findById({ _id: req.params.id }).then((result) => {
+  await Employee.findById({ _id: req.params.id })
+    .then((result) => {
       res.status(200).json(result);
+    })
+    .catch((error) => {
+      res.status(404).json({ error });
     });
-  } catch (err) {
-    res.status(404).send(err);
-  }
 });
 
 router.delete("/delete/:id", async (req, res) => {
-  try {
-    await Employee.findOneAndDelete({ _id: req.params.id });
-    await Employee.find({}).then((result) => {
+  await Employee.findOneAndDelete({ _id: req.params.id });
+  await Employee.find({})
+    .then((result) => {
       res.status(200).json(result);
+    })
+    .catch((error) => {
+      res.status(400).json({ error });
     });
-  } catch (err) {
-    res.status(400).send(err);
-  }
 });
 
 module.exports = router;
