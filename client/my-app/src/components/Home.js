@@ -4,18 +4,18 @@ import SortList from "../components/SortList";
 import FilterList from "../components/FilterList";
 import EquipmentTable from "./EquipmentTable";
 
-// const fetchEmployeesData = async (dataSetter) => {
-//   const response = await fetch("http://localhost:8080/api");
-//   const data = await response.json();
+const fetchEmployeesData = async (dataSetter) => {
+  const response = await fetch("http://localhost:8080/api");
+  const data = await response.json();
 
-//   if (!response.ok) {
-//     console.log(`Error:${response.status} ${response.statusText}`);
-//   }
-//   dataSetter(data);
-// };
+  if (!response.ok) {
+    console.log(`Error:${response.status} ${response.statusText}`);
+  }
+  dataSetter(data);
+};
 
 const fetchEquipmentData = async (dataSetter) => {
-  const response = await fetch("http://localhost:8080/api/equipment");
+  const response = await fetch("http://localhost:8080/equipment");
   const data = await response.json();
 
   if (!response.ok) {
@@ -29,8 +29,12 @@ const Home = () => {
   const [equipmentData, setEquipmentData] = useState([]);
 
   useEffect(() => {
-    // fetchEmployeesData(setEmployeeData);
-    fetchEquipmentData(setEquipmentData);
+    const fetchData = async () => {
+      await fetchEmployeesData(setEmployeeData);
+      await fetchEquipmentData(setEquipmentData);
+    };
+
+    fetchData();
   }, []);
 
   const updateData = (data) => {
