@@ -58,6 +58,7 @@ const Home = () => {
       <EquipmentTable
         equipmentData={equipmentData}
         updateData={updateEquipmentData}
+        employeeData={employeeData}
       />
     </div>
   );

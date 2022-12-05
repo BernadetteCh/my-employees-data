@@ -2,7 +2,7 @@ import React from "react";
 import Table from "react-bootstrap/Table";
 import EquipmentTableRow from "../components/EquipmentTableRow";
 
-const EquipmentTable = ({ equipmentData, updateData }) => {
+const EquipmentTable = ({ equipmentData, updateData, employeeData }) => {
   const updateEquipmentList = (data) => {
     updateData(data);
   };
@@ -13,6 +13,7 @@ const EquipmentTable = ({ equipmentData, updateData }) => {
           <th>Name</th>
           <th>Type</th>
           <th>amount</th>
+          <th>Assign Employee</th>
         </tr>
       </thead>
       <tbody>
@@ -26,6 +27,7 @@ const EquipmentTable = ({ equipmentData, updateData }) => {
                   key={equipment._id}
                   myKey={index}
                   updateData={updateEquipmentList}
+                  employeeData={employeeData}
                 />
               );
             })}

@@ -11,4 +11,13 @@ router.get("/", async (req, res) => {
       res.status(400).json({ error });
     });
 });
+
+router.put("/assignList", async (req, res) => {
+  const newS = await Equipment.updateOne(
+    { name: req.body.employee },
+    { $set: { equipment: req.body.equipment } },
+    { multi: true }
+  );
+  console.log(newS);
+});
 module.exports = router;
