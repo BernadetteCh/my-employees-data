@@ -49,8 +49,20 @@ router.put("/edit/:id", async (req, res) => {
     res.status(404).send();
   }
 });
+router.post("/filter", async (req, res) => {
+  try {
+    await Employee.find({
+      [req.body.filterValue]: { $regex: req.body.inputValue },
+    }).then((result) => {
+      res.status(200).send(result);
+    });
+  } catch (err) {
+    res.status(404).send();
+  }
+});
 
 router.get("/:sortValue", async (req, res) => {
+  console.log(req.params.sortValue);
   try {
     await Employee.find()
       .sort({ [req.params.sortValue]: 1 })

@@ -10,7 +10,6 @@ const Edit = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      console.log(id);
       const response = await fetch(`http://localhost:8080/api/edit/${id}`);
       const data = await response.json();
 

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Table from "react-bootstrap/Table";
 import TableRow from "../components/TableRow";
 import SortList from "../components/SortList";
+import FilterList from "../components/FilterList";
 
 const Home = () => {
   const [data, setData] = useState([]);
@@ -28,6 +29,10 @@ const Home = () => {
       <h1 style={{ textAlign: "center" }}>My Employees Data 🙃🍀</h1>
       <p>Sort List </p>
       <SortList updateData={updateData} />
+      <p>Filter List</p>
+
+      <FilterList employees={data} updateData={updateData} />
+
       <Table striped>
         <thead>
           <tr>
