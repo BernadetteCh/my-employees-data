@@ -30,9 +30,7 @@ const Home = () => {
       <p>Sort List </p>
       <SortList updateData={updateData} />
       <p>Filter List</p>
-
       <FilterList employees={data} updateData={updateData} />
-
       <Table striped>
         <thead>
           <tr>
