@@ -3,7 +3,6 @@ const router = express.Router();
 const Equipment = require("../db/equipmentSchema");
 
 router.get("/", async (req, res) => {
-  console.log(req.body);
   await Equipment.find()
     .then((result) => {
       console.log(result);
