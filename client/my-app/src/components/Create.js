@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import "../App.css";
 import Input from "../components/Input";
 
 const Create = () => {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const [inputValue, setInputValue] = useState({
     firstName: "",
     secondName: "",
@@ -51,7 +51,7 @@ const Create = () => {
         level: "",
       });
     }
-    // navigate("/");
+    navigate("/");
   };
 
   return (
