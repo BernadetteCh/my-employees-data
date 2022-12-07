@@ -31,7 +31,7 @@ const EquipmentTableRow = ({
       <td>{equipment.name}</td>
       <td>{equipment.type}</td>
       <td>{equipment.amount}</td>
-      <td>
+      {/* <td>
         <select onChange={selectEmployee}>
           <option defaultValue="select">Select</option>
           {employeeData.map((employee) => {
@@ -40,7 +40,7 @@ const EquipmentTableRow = ({
             );
           })}
         </select>
-      </td>
+      </td> */}
       <td>
         <Link>Edit</Link> | <Button onClick={deleteEquipment}>Delete</Button>
       </td>
