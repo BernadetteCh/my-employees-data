@@ -31,10 +31,9 @@ router.post("/save/newemployee", async (req, res) => {
   }
 });
 
-router.post("/edit/:id", async (req, res) => {
+router.put("/edit/:id", async (req, res) => {
   console.log("From Body " + req.body.data);
   const { firstName, secondName, lastName, position, level } = req.body.data;
-  console.log(firstName);
   await Employee.findByIdAndUpdate(
     { _id: req.params.id },
     {
