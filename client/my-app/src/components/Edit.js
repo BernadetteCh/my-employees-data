@@ -25,7 +25,6 @@ const Edit = () => {
         console.log(`Error: ${response.status} ${response.statusText}`);
       }
       setData(data);
-      //setEditData(data);
     };
     fetchData();
   }, [id]);
@@ -37,27 +36,18 @@ const Edit = () => {
     }));
   };
 
-  // function updateForm(value) {
-  //   return setEditData((prev) => {
-  //     return { ...prev, ...value };
-  //   });
-  // }
-
   const editEmployee = async (e) => {
     e.preventDefault();
-    const response = fetch(`http://localhost:8080/api/edit/${id}`, {
+    const response = await fetch(`http://localhost:8080/api/edit/${id}`, {
       method: "POST",
       headers: {
         "Content-type": "application/json",
       },
       body: JSON.stringify({ data }),
     });
-
-    console.log(response.status);
-
-    // if (!response.ok) {
-    //   console.log(`Error:${response.status} ${response.statusText}`);
-    // }
+    if (!response.ok) {
+      console.log(`Error:${response.status} ${response.statusText}`);
+    }
   };
 
   return (
@@ -65,7 +55,7 @@ const Edit = () => {
       <h2>Edit an Employee</h2>
       <form>
         <label className="d-block">FirstName:</label>
-        {/* <Input
+        <Input
           type={"text"}
           name={"firstName"}
           value={data.firstName}
@@ -74,27 +64,20 @@ const Edit = () => {
               [e.target.name]: e.target.value,
             })
           }
-        /> */}
-        <input
-          type="text"
-          name="firstName"
-          value={data.firstName}
-          onChange={(e) =>
-            editEmployeeData({ [e.target.name]: e.target.value })
-          }
-        ></input>
-
+        />
         <label className="d-block">SecondName:</label>
-        <input
-          type="text"
-          name="secondName"
+        <Input
+          type={"text"}
+          name={"secondName"}
           value={data.secondName}
-          onChange={(e) =>
-            editEmployeeData({ [e.target.name]: e.target.value })
+          upDateInputValue={(e) =>
+            editEmployeeData({
+              [e.target.name]: e.target.value,
+            })
           }
-        ></input>
+        />
         <label className="d-block">LastName:</label>
-        {/* <Input
+        <Input
           type={"text"}
           name={"lastName"}
           value={data.lastName}
@@ -103,17 +86,9 @@ const Edit = () => {
               [e.target.name]: e.target.value,
             })
           }
-        /> */}
-        <input
-          type="text"
-          name="lastName"
-          value={data.lastName}
-          onChange={(e) =>
-            editEmployeeData({ [e.target.name]: e.target.value })
-          }
-        ></input>
+        />
         <label className="d-block">Position</label>
-        {/* <Input
+        <Input
           type={"text"}
           name={"position"}
           value={data.position}
@@ -122,15 +97,7 @@ const Edit = () => {
               [e.target.name]: e.target.value,
             })
           }
-        /> */}
-        <input
-          type="text"
-          name="position"
-          value={data.position}
-          onChange={(e) =>
-            editEmployeeData({ [e.target.name]: e.target.value })
-          }
-        ></input>
+        />
         <select
           name="level"
           className="d-block mt-5"
