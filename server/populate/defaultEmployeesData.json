@@ -34,6 +34,13 @@
       "lastName": "Salman",
       "position": "Code-Cool student",
       "level": "junior-developer"
+    },
+    {
+      "firstName": "Zlatan",
+      "secondName": "",
+      "lastName": "Ibrahimović ",
+      "position": "Stürmer",
+      "level": "senior-developer"
     }
   ]
 }
