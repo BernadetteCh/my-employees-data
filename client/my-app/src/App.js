@@ -2,9 +2,9 @@ import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Navbar from "./components/Navbar";
-import CreateEmployee from "./components/Create";
-import Home from "./components/Home";
-import Edit from "./components/Edit";
+import CreateEmployee from "../src/components/Employee/Create";
+import Home from "../src/components/Home";
+import Edit from "../src/components/Employee/Edit";
 import "./App.css";
 
 function App() {

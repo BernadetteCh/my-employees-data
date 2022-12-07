@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router";
 import { useNavigate } from "react-router";
 import Button from "react-bootstrap/Button";
-import Input from "../components/Input";
+import Input from "../Input";
 
 const Edit = () => {
   const [data, setData] = useState([]);

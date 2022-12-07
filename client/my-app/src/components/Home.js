@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import EmployeeTable from "./EmployeeTable";
-import SortList from "../components/SortList";
-import FilterList from "../components/FilterList";
-import EquipmentTable from "./EquipmentTable";
+import EmployeeTable from "../components/Employee/EmployeeTable";
+import SortList from "../components/Employee/SortList";
+import FilterList from "../components/Employee/FilterList";
+import EquipmentTable from "../components/Equipment/EquipmentTable";
 
 const fetchEmployeesData = async (dataSetter) => {
   const response = await fetch("http://localhost:8080/api");

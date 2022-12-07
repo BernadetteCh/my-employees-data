@@ -14,18 +14,18 @@ const EquipmentTableRow = ({
     newList.splice(myKey, 1);
     updateData(newList);
   };
-  const selectEmployee = async (e) => {
-    const response = await fetch("http://localhost:8080/equipment/assignList", {
-      method: "PUT",
-      headers: {
-        "Content-type": "application/json",
-      },
-      body: JSON.stringify({ equipment, employee: e.target.value }),
-    });
-    if (!response.ok) {
-      console.log(`Error: ${response.status}`);
-    }
-  };
+  // const selectEmployee = async (e) => {
+  //   const response = await fetch("http://localhost:8080/equipment/assignList", {
+  //     method: "PUT",
+  //     headers: {
+  //       "Content-type": "application/json",
+  //     },
+  //     body: JSON.stringify({ equipment, employee: e.target.value }),
+  //   });
+  //   if (!response.ok) {
+  //     console.log(`Error: ${response.status}`);
+  //   }
+  // };
   return (
     <tr>
       <td>{equipment.name}</td>

@@ -1,6 +1,6 @@
 import React from "react";
 import Table from "react-bootstrap/Table";
-import EquipmentTableRow from "../components/EquipmentTableRow";
+import EquipmentTableRow from "./EquipmentTableRow";
 
 const EquipmentTable = ({ equipmentData, updateData, employeeData }) => {
   const updateEquipmentList = (data) => {

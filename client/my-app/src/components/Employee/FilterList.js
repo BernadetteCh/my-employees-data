@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Input from "./Input";
+import Input from "../Input";
 
 const sendInput = async (inputValue, filterValue, updateData) => {
   const response = await fetch(`http://localhost:8080/api/filter`, {
@@ -45,7 +45,7 @@ const FilterList = ({ employees, updateData }) => {
     }, 500);
 
     return () => clearTimeout(timer);
-  }, [inputValue, filterValue]);
+  }, [inputValue, filterValue, updateData]);
 
   const getInputValue = (e) => {
     setInputValue(e.target.value);
@@ -74,6 +74,7 @@ const FilterList = ({ employees, updateData }) => {
       <div>
         <Input
           type={"text"}
+          name={"filterInput"}
           value={inputValue}
           upDateInputValue={getInputValue}
         />

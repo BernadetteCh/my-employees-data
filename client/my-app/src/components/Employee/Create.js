@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Button from "react-bootstrap/Button";
-import "../App.css";
-import Input from "../components/Input";
+import "../../App.css";
+import Input from "../Input";
 
 const Create = () => {
   const navigate = useNavigate();
