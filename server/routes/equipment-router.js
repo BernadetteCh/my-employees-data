@@ -16,6 +16,21 @@ router.get("/", async (req, res) => {
     });
 });
 
+router.post("/create", async (req, res) => {
+  const { name, type, amount } = req.body.inputValue;
+  const newEquipment = new Equipment({
+    name: name,
+    type: type,
+    amount: amount,
+  });
+  try {
+    await newEquipment.save();
+    res.status(200).json(newEquipment);
+  } catch (error) {
+    res.status(500).json({ error });
+  }
+});
+
 router.put("/assignList", async (req, res) => {
   console.log(req.body);
 });
