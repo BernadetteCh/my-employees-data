@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Input from "./Input";
 
 const sendInput = async (inputValue, filterValue, updateData) => {
   const response = await fetch(`http://localhost:8080/api/filter`, {
@@ -57,26 +58,26 @@ const FilterList = ({ employees, updateData }) => {
   return (
     <div>
       <label>Position</label>
-      <input
-        type="radio"
-        name="radio-button"
-        value="position"
-        onChange={getFilterValue}
-      ></input>
+      <Input
+        type={"radio"}
+        name={"radio-button"}
+        value={"position"}
+        upDateInputValue={getFilterValue}
+      />
       <label>Level</label>
-      <input
-        type="radio"
-        name="radio-button"
-        value="level"
-        onChange={getFilterValue}
-      ></input>
-      <input
-        type="text"
-        placeholder="filterable by Position & Level"
-        value={inputValue}
-        onChange={getInputValue}
-        className="d-block"
-      ></input>
+      <Input
+        type={"radio"}
+        name={"radio-button"}
+        value={"level"}
+        upDateInputValue={getFilterValue}
+      />
+      <div>
+        <Input
+          type={"text"}
+          value={inputValue}
+          upDateInputValue={getInputValue}
+        />
+      </div>
     </div>
   );
 };

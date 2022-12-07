@@ -31,26 +31,30 @@ router.post("/save/newemployee", async (req, res) => {
   }
 });
 
-router.put("/edit/:id", async (req, res) => {
+router.post("/edit/:id", async (req, res) => {
+  console.log("From Body " + req.body.data);
   const { firstName, secondName, lastName, position, level } = req.body.data;
-  try {
-    await Employee.findByIdAndUpdate(
-      { _id: req.params.id },
-      {
-        $set: {
-          firstName: firstName,
-          secondName: secondName,
-          lastName: lastName,
-          position: position,
-          level: level,
-        },
-      }
-    ).then((result) => {
+  console.log(firstName);
+  await Employee.findByIdAndUpdate(
+    { _id: req.params.id },
+    {
+      $set: {
+        firstName: firstName,
+        secondName: secondName,
+        lastName: lastName,
+        position: position,
+        level: level,
+      },
+    }
+  )
+    .then((result) => {
+      console.log(result);
       res.status(200).json(result);
+    })
+    .catch((error) => {
+      console.log(error);
+      res.status(404).json({ error });
     });
-  } catch (error) {
-    res.status(404).json({ error });
-  }
 });
 router.post("/filter", async (req, res) => {
   await Employee.find({

@@ -9,7 +9,7 @@ const Navbar = () => {
         <img src={logos} alt="technology-icons" className="logos"></img>
       </Link>
       <Link to="/create" className="navbar-link">
-        Create
+        Create Employee
       </Link>
     </ul>
   );

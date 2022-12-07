@@ -1,9 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router";
 import Button from "react-bootstrap/Button";
+import Input from "../components/Input";
 
 const Edit = () => {
   const [data, setData] = useState([]);
+  // const [editData, setEditData] = useState({
+  //   firstName: "",
+  //   secondName: "asdf",
+  //   lastName: "asdf",
+  //   position: "asdf",
+  //   level: "asdf",
+  // });
 
   const params = useParams();
   const id = params.id;
@@ -17,6 +25,7 @@ const Edit = () => {
         console.log(`Error: ${response.status} ${response.statusText}`);
       }
       setData(data);
+      //setEditData(data);
     };
     fetchData();
   }, [id]);
@@ -28,21 +37,27 @@ const Edit = () => {
     }));
   };
 
+  // function updateForm(value) {
+  //   return setEditData((prev) => {
+  //     return { ...prev, ...value };
+  //   });
+  // }
+
   const editEmployee = async (e) => {
     e.preventDefault();
     const response = fetch(`http://localhost:8080/api/edit/${id}`, {
-      method: "PUT",
+      method: "POST",
       headers: {
         "Content-type": "application/json",
       },
-      body: JSON.stringify({
-        data,
-      }),
+      body: JSON.stringify({ data }),
     });
 
-    if (!response.ok) {
-      console.log(`Error:${response.status} ${response.statusText}`);
-    }
+    console.log(response.status);
+
+    // if (!response.ok) {
+    //   console.log(`Error:${response.status} ${response.statusText}`);
+    // }
   };
 
   return (
@@ -50,6 +65,16 @@ const Edit = () => {
       <h2>Edit an Employee</h2>
       <form>
         <label className="d-block">FirstName:</label>
+        {/* <Input
+          type={"text"}
+          name={"firstName"}
+          value={data.firstName}
+          upDateInputValue={(e) =>
+            editEmployeeData({
+              [e.target.name]: e.target.value,
+            })
+          }
+        /> */}
         <input
           type="text"
           name="firstName"
@@ -58,6 +83,7 @@ const Edit = () => {
             editEmployeeData({ [e.target.name]: e.target.value })
           }
         ></input>
+
         <label className="d-block">SecondName:</label>
         <input
           type="text"
@@ -68,6 +94,16 @@ const Edit = () => {
           }
         ></input>
         <label className="d-block">LastName:</label>
+        {/* <Input
+          type={"text"}
+          name={"lastName"}
+          value={data.lastName}
+          upDateInputValue={(e) =>
+            editEmployeeData({
+              [e.target.name]: e.target.value,
+            })
+          }
+        /> */}
         <input
           type="text"
           name="lastName"
@@ -77,6 +113,16 @@ const Edit = () => {
           }
         ></input>
         <label className="d-block">Position</label>
+        {/* <Input
+          type={"text"}
+          name={"position"}
+          value={data.position}
+          upDateInputValue={(e) =>
+            editEmployeeData({
+              [e.target.name]: e.target.value,
+            })
+          }
+        /> */}
         <input
           type="text"
           name="position"
@@ -93,9 +139,15 @@ const Edit = () => {
           }
         >
           <option defaultValue={data.level}>Select</option>
-          <option value="intern">Intern</option>
-          <option value="junior-developer">Junior-Developer</option>
-          <option value="senior-developer">Senior-Developer</option>
+          <option value="intern" name="intern">
+            Intern
+          </option>
+          <option value="junior-developer" name="junior-developer">
+            Junior-Developer
+          </option>
+          <option value="senior-developer" name="senior-developer">
+            Senior-Developer
+          </option>
         </select>
         <Button type="submit" className="d-block mt-5" onClick={editEmployee}>
           Edit

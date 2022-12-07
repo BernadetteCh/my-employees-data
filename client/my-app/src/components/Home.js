@@ -14,15 +14,15 @@ const fetchEmployeesData = async (dataSetter) => {
   dataSetter(data);
 };
 
-const fetchEquipmentData = async (dataSetter) => {
-  const response = await fetch("http://localhost:8080/equipment");
-  const data = await response.json();
+// const fetchEquipmentData = async (dataSetter) => {
+//   const response = await fetch("http://localhost:8080/equipment");
+//   const data = await response.json();
 
-  if (!response.ok) {
-    console.log(`Error: ${response.status} ${response.statusText}`);
-  }
-  dataSetter(data);
-};
+//   if (!response.ok) {
+//     console.log(`Error: ${response.status} ${response.statusText}`);
+//   }
+//   dataSetter(data);
+// };
 
 const Home = () => {
   const [employeeData, setEmployeeData] = useState([]);
@@ -31,7 +31,7 @@ const Home = () => {
   useEffect(() => {
     const fetchData = async () => {
       await fetchEmployeesData(setEmployeeData);
-      await fetchEquipmentData(setEquipmentData);
+      // await fetchEquipmentData(setEquipmentData);
     };
 
     fetchData();

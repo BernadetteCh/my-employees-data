@@ -2,6 +2,7 @@ import React, { useState } from "react";
 // import { useNavigate } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import "../App.css";
+import Input from "../components/Input";
 
 const Create = () => {
   // const navigate = useNavigate();
@@ -58,61 +59,58 @@ const Create = () => {
       <h2>Create a new Employee</h2>
       <form>
         <label className="d-block">FirstName:</label>
-        <input
+        <Input
           type="text"
           name="firstName"
           value={inputValue.firstName}
-          onChange={upDateInputValue}
-        ></input>
+          upDateInputValue={upDateInputValue}
+        />
         <label className="d-block">SecondName:</label>
-        <input
+        <Input
           type="text"
           name="secondName"
           value={inputValue.secondName}
-          onChange={upDateInputValue}
-        ></input>
+          upDateInputValue={upDateInputValue}
+        />
         <label className="d-block">LastName:</label>
-        <input
+        <Input
           type="text"
           name="lastName"
           value={inputValue.lastName}
-          onChange={upDateInputValue}
-        ></input>
+          upDateInputValue={upDateInputValue}
+        />
         <label className="d-block">Position:</label>
-        <input
+        <Input
           type="text"
           name="position"
           value={inputValue.position}
-          onChange={upDateInputValue}
-        ></input>
+          upDateInputValue={upDateInputValue}
+        />
         <label className="d-block">Level:</label>
-        <input
+        <Input
           type="radio"
-          id="intern"
           name="level"
           value="intern"
-          onChange={upDateInputValue}
+          upDateInputValue={upDateInputValue}
         />
         <label htmlFor="intern" className="me-5">
           Intern
         </label>
-        <input
+        <Input
           type="radio"
-          id="junior-developer"
           name="level"
           value="junior-developer"
-          onChange={upDateInputValue}
-        ></input>
+          upDateInputValue={upDateInputValue}
+        />
         <label htmlFor="junior-developer" className="me-5">
           Junior Developer
         </label>
-        <input
+        <Input
           type="radio"
-          id="senior-developer"
           name="level"
-          value="senior-developer"
-          onChange={upDateInputValue}
-        ></input>
+          value="junior-developer"
+          upDateInputValue={upDateInputValue}
+        />
         <label htmlFor="senior-developer" className="me-5">
           Senior Developer
         </label>
