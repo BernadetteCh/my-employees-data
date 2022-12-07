@@ -1,0 +1,39 @@
+{
+  "data": [
+    {
+      "firstName": "Neymar",
+      "secondName": "Silva",
+      "lastName": "Santos Junior",
+      "position": "Stürmer",
+      "level": "junior-developer"
+    },
+    {
+      "firstName": "Christiano",
+      "secondName": "Ronaldo",
+      "lastName": "Santos Aveiro",
+      "position": "FlügelSpieler",
+      "level": "intern"
+    },
+    {
+      "firstName": "Rafael",
+      "secondName": "Nadal",
+      "lastName": "Parera",
+      "position": "Tennisplayer",
+      "level": "intern"
+    },
+    {
+      "firstName": "Lionel",
+      "secondName": "Andres Leo",
+      "lastName": "Messi",
+      "position": "SoccerPlayer",
+      "level": "senior-developer"
+    },
+    {
+      "firstName": "Muhammed",
+      "secondName": "Abdulbasid",
+      "lastName": "Salman",
+      "position": "Code-Cool student",
+      "level": "junior-developer"
+    }
+  ]
+}
