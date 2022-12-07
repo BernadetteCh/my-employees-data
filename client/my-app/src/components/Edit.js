@@ -1,18 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router";
+import { useNavigate } from "react-router";
 import Button from "react-bootstrap/Button";
 import Input from "../components/Input";
 
 const Edit = () => {
   const [data, setData] = useState([]);
-  // const [editData, setEditData] = useState({
-  //   firstName: "",
-  //   secondName: "asdf",
-  //   lastName: "asdf",
-  //   position: "asdf",
-  //   level: "asdf",
-  // });
 
+  const navigate = useNavigate();
   const params = useParams();
   const id = params.id;
 
@@ -39,7 +34,7 @@ const Edit = () => {
   const editEmployee = async (e) => {
     e.preventDefault();
     const response = await fetch(`http://localhost:8080/api/edit/${id}`, {
-      method: "POST",
+      method: "PUT",
       headers: {
         "Content-type": "application/json",
       },
@@ -48,6 +43,7 @@ const Edit = () => {
     if (!response.ok) {
       console.log(`Error:${response.status} ${response.statusText}`);
     }
+    navigate("/");
   };
 
   return (
