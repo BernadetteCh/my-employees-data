@@ -13,7 +13,7 @@ const EquipmentTable = ({ equipmentData, updateData, employeeData }) => {
           <th>Name</th>
           <th>Type</th>
           <th>amount</th>
-          <th>Assign Employee</th>
+          {/* <th>Assign Employee</th> */}
         </tr>
       </thead>
       <tbody>
