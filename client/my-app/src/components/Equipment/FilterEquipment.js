@@ -35,6 +35,7 @@ const FiltreEquipment = ({ updateData }) => {
       dataSetter(data);
     }
   };
+
   useEffect(() => {
     const timer = setTimeout(() => {
       if (
