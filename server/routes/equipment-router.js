@@ -44,6 +44,25 @@ router.get("/edit/equipment/:id", async (req, res) => {
       res.status(400).json({ error });
     });
 });
+router.get("/sort/:key/:method", async (req, res) => {
+  if (req.params.method === "ascending") {
+    await Equipment.find()
+      .sort({ [req.params.key]: 1 })
+      .then((result) => {
+        res.status(200).json(result);
+      });
+  } else if (req.params.method === "descending") {
+    await Equipment.find()
+      .sort({ [req.params.key]: -1 })
+      .then((result) => {
+        res.status(200).json(result);
+      });
+  } else {
+    await Equipment.find().then((result) => {
+      res.json(result);
+    });
+  }
+});
 
 router.put("/edit/equipment/:id", async (req, res) => {
   const { name, type, amount } = req.body.equipmentData;
