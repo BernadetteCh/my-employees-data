@@ -8,6 +8,7 @@ const Navbar = () => {
       <Link to="/" className="navbar-link">
         <img src={logos} alt="technology-icons" className="logos"></img>
       </Link>
+
       <Link to="/create-equipment" className="navbar-link">
         Create Equipment
       </Link>
