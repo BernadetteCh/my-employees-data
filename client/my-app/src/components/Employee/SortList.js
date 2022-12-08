@@ -5,7 +5,6 @@ const SortList = ({ updateData }) => {
   const sortList = async (e) => {
     const response = await fetch(`http://localhost:8080/api/${e.target.value}`);
     const data = await response.json();
-
     if (!response.ok) {
       console.log(`Error : ${response.status} ${response.statusText}`);
     }
