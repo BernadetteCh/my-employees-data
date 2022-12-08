@@ -84,4 +84,16 @@ router.put("/edit/equipment/:id", async (req, res) => {
     });
 });
 
+router.post("/filter/:filterValue", async (req, res) => {
+  await Equipment.find({
+    [req.params.filterValue]: { $regex: req.body.inputValue },
+  })
+    .then((result) => {
+      res.status(200).json(result);
+    })
+    .catch((error) => {
+      res.status(400).json({ error });
+    });
+});
+
 module.exports = router;

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import EmployeeTable from "../components/Employee/EmployeeTable";
 import SortList from "../components/Employee/SortList";
 import FilterList from "../components/Employee/FilterList";
+import FilterEquipment from "../components/Equipment/FilterEquipment";
 import EquipmentTable from "../components/Equipment/EquipmentTable";
 
 const fetchEmployeesData = async (dataSetter) => {
@@ -56,6 +57,10 @@ const Home = () => {
         renderData={updateEmployeeData}
       />
       <h2>Equipment Table</h2>
+      <FilterEquipment
+        equipments={equipmentData}
+        updateData={updateEquipmentData}
+      />
       <EquipmentTable
         equipmentData={equipmentData}
         updateData={updateEquipmentData}
