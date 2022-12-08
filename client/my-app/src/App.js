@@ -6,6 +6,7 @@ import CreateEmployee from "../src/components/Employee/Create";
 import CreateEquipment from "./components/Equipment/CreateEquipment";
 import Home from "../src/components/Home";
 import Edit from "../src/components/Employee/Edit";
+import EditEquipment from "./components/Equipment/EditEquipment";
 import "./App.css";
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
           <Route path="/" element={<Home />}></Route>
           <Route path="/create" element={<CreateEmployee />}></Route>
           <Route path="/create-equipment" element={<CreateEquipment />}></Route>
+          <Route path="/edit/:id" element={<EditEquipment />}></Route>
           <Route path="/edit/:id" element={<Edit />}></Route>
         </Routes>
       </BrowserRouter>
