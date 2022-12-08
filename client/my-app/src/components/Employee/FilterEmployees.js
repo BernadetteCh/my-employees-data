@@ -31,6 +31,7 @@ const displayAllEmployees = async (updateData) => {
 const FilterList = ({ updateData }) => {
   const [filterValue, setFilterValue] = useState("");
   const [inputValue, setInputValue] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -48,7 +49,12 @@ const FilterList = ({ updateData }) => {
   }, [inputValue, filterValue]);
 
   const getInputValue = (e) => {
-    setInputValue(e.target.value);
+    if (filterValue === "") {
+      setErrorMessage("Please select a method");
+    } else {
+      setInputValue(e.target.value);
+      setErrorMessage("");
+    }
   };
 
   const getFilterValue = (e) => {
@@ -79,6 +85,7 @@ const FilterList = ({ updateData }) => {
           upDateInputValue={getInputValue}
         />
       </div>
+      <div style={{ color: "pink" }}>{errorMessage}</div>
     </div>
   );
 };

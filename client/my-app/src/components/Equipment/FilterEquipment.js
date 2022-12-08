@@ -4,6 +4,7 @@ import Input from "../Input";
 const FiltreEquipment = ({ updateData }) => {
   const [filterValue, setFilterValue] = useState("");
   const [inputValue, setInputValue] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
   const sendInputValue = async (inputValue, filterValue, dataSetter) => {
     const response = await fetch(
@@ -54,7 +55,12 @@ const FiltreEquipment = ({ updateData }) => {
     setFilterValue(e.target.value);
   };
   const getInputValue = (e) => {
-    setInputValue(e.target.value);
+    if (filterValue === "") {
+      setErrorMessage("Please select a method");
+    } else {
+      setInputValue(e.target.value);
+      setErrorMessage("");
+    }
   };
 
   return (
@@ -81,6 +87,7 @@ const FiltreEquipment = ({ updateData }) => {
           upDateInputValue={getInputValue}
         />
       </div>
+      <div style={{ color: "pink" }}>{errorMessage}</div>
     </div>
   );
 };
