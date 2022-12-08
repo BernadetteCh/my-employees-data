@@ -1,4 +1,5 @@
 import React from "react";
+import Option from "../Option";
 
 const SortList = ({ updateData }) => {
   const sortList = async (e) => {
@@ -15,11 +16,11 @@ const SortList = ({ updateData }) => {
     <div>
       <select name="option" onChange={sortList}>
         <option defaultValue="select">Select</option>
-        <option value="firstName">FirstName</option>
-        <option value="secondName">SecondName</option>
-        <option value="lastName">LastName</option>
-        <option value="position">Postion</option>
-        <option value="level">Level</option>
+        <Option value={"firstName"} option={"FirstName"} />
+        <Option value={"secondName"} option={"SecondName"} />
+        <Option value={"lastName"} option={"LastName"} />
+        <Option value={"position"} option={"Position"} />
+        <Option value={"level"} option={"Level"} />
       </select>
     </div>
   );
