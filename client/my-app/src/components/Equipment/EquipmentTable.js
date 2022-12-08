@@ -65,7 +65,6 @@ const EquipmentTable = ({ equipmentData, updateData, employeeData }) => {
               ⬇
             </button>
           </th>
-          {/* <th>Assign Employee</th> */}
         </tr>
       </thead>
       <tbody>
