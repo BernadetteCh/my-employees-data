@@ -32,9 +32,9 @@ const EditEquipment = () => {
       ...obj,
     }));
   };
-  const editEquipment = (e) => {
+  const editEquipment = async (e) => {
     e.preventDefault();
-    const response = fetch(
+    const response = await fetch(
       `http://localhost:8080/equipment/edit/equipment/${id}`,
       {
         method: "PUT",
