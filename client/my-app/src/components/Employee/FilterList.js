@@ -45,7 +45,7 @@ const FilterList = ({ employees, updateData }) => {
     }, 500);
 
     return () => clearTimeout(timer);
-  }, [inputValue, filterValue, updateData]);
+  }, [inputValue, filterValue]);
 
   const getInputValue = (e) => {
     setInputValue(e.target.value);
