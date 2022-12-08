@@ -42,7 +42,7 @@ const EquipmentTableRow = ({
         </select>
       </td> */}
       <td>
-        {/* <Link to={`/edit/${equipment._id}`}>Edit</Link> |{" "} */}
+        <Link to={`/edit/equipment/${equipment._id}`}>Edit</Link> |
         <Button onClick={deleteEquipment}>Delete</Button>
       </td>
     </tr>
