@@ -35,4 +35,34 @@ router.put("/assignList", async (req, res) => {
   console.log(req.body);
 });
 
+router.get("/edit/equipment/:id", async (req, res) => {
+  await Equipment.findById({ _id: req.params.id })
+    .then((result) => {
+      res.status(200).json(result);
+    })
+    .catch((error) => {
+      res.status(400).json({ error });
+    });
+});
+
+router.put("/edit/equipment/:id", async (req, res) => {
+  const { name, type, amount } = req.body.equipmentData;
+  await Equipment.findByIdAndUpdate(
+    { _id: req.params.id },
+    {
+      $set: {
+        name: name,
+        type: type,
+        amount: amount,
+      },
+    }
+  )
+    .then((result) => {
+      res.status(200).json(result);
+    })
+    .catch((error) => {
+      res.status(500).json({ error });
+    });
+});
+
 module.exports = router;
