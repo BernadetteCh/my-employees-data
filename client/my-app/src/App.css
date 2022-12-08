@@ -4,7 +4,11 @@ label {
 body {
   padding: 20px;
 }
-
+.sortButton {
+  margin: 2.5px;
+  border: none;
+  background: white;
+}
 .navbar-link {
   color: grey;
   text-decoration: none;
