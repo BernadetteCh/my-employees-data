@@ -3,6 +3,7 @@ import { useParams } from "react-router";
 import { useNavigate } from "react-router";
 import Button from "react-bootstrap/Button";
 import Input from "../Input";
+import Option from "../Option";
 
 const Edit = () => {
   const [data, setData] = useState([]);
@@ -102,7 +103,18 @@ const Edit = () => {
           }
         >
           <option defaultValue={data.level}>Select</option>
-          <option value="intern" name="intern">
+          <Option value={"intern"} option={"intern"} name={"intern"} />
+          <Option
+            value={"junior-developer"}
+            option={"Junior Developer"}
+            name={"junior-developer"}
+          />
+          <Option
+            value={"senior-developer"}
+            option={"Senior Developer"}
+            name={"senior-developer"}
+          />
+          {/* <option value="intern" name="intern">
             Intern
           </option>
           <option value="junior-developer" name="junior-developer">
@@ -110,7 +122,7 @@ const Edit = () => {
           </option>
           <option value="senior-developer" name="senior-developer">
             Senior-Developer
-          </option>
+          </option> */}
         </select>
         <Button type="submit" className="d-block mt-5" onClick={editEmployee}>
           Edit
