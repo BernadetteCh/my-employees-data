@@ -11,10 +11,11 @@ const Edit = () => {
   const navigate = useNavigate();
   const params = useParams();
   const id = params.id;
+  const url = `http://localhost:8080/api/edit/${id}`;
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch(`http://localhost:8080/api/edit/${id}`);
+      const response = await fetch(`${url}`);
       const data = await response.json();
 
       if (!response.ok) {
@@ -34,7 +35,7 @@ const Edit = () => {
 
   const editEmployee = async (e) => {
     e.preventDefault();
-    const response = await fetch(`http://localhost:8080/api/edit/${id}`, {
+    const response = await fetch(`${url}`, {
       method: "PUT",
       headers: {
         "Content-type": "application/json",

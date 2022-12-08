@@ -10,6 +10,7 @@ const CreateEquipment = () => {
     type: "",
     amount: "",
   });
+  const url = "http://localhost:8080/equipment/create";
   const navigate = useNavigate();
 
   const upDateInputValue = (e) => {
@@ -17,7 +18,7 @@ const CreateEquipment = () => {
   };
   const saveData = async (e) => {
     e.preventDefault();
-    const response = await fetch("http://localhost:8080/equipment/create", {
+    const response = await fetch(`${url}`, {
       method: "POST",
       headers: {
         "Content-type": "application/json",

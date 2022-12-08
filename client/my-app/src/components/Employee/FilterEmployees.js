@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import Input from "../Input";
 
 const sendInput = async (inputValue, filterValue, updateData) => {
-  const response = await fetch(`http://localhost:8080/api/filter`, {
+  const url = "http://localhost:8080/api/filter";
+  const response = await fetch(`${url}`, {
     method: "POST",
     headers: {
       "Content-type": "application/json",
@@ -19,7 +20,8 @@ const sendInput = async (inputValue, filterValue, updateData) => {
 };
 
 const displayAllEmployees = async (updateData) => {
-  const response = await fetch("http://localhost:8080/api");
+  const url = "http://localhost:8080/api";
+  const response = await fetch(`${url}`);
   const data = await response.json();
 
   if (!response.ok) {

@@ -5,6 +5,7 @@ import "../../App.css";
 import Input from "../Input";
 
 const Create = () => {
+  const url = "http://localhost:8080/api/save/newemployee";
   const navigate = useNavigate();
   const [inputValue, setInputValue] = useState({
     firstName: "",
@@ -20,7 +21,7 @@ const Create = () => {
 
   const saveData = async (e) => {
     e.preventDefault(e);
-    const response = await fetch("http://localhost:8080/api/save/newemployee", {
+    const response = await fetch(`${url}`, {
       method: "POST",
       headers: {
         "Content-type": "application/json",

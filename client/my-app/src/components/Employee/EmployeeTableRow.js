@@ -5,7 +5,8 @@ import { Link } from "react-router-dom";
 const TableRow = ({ employee, employees, myKey, updateData }) => {
   const deleteEmployee = async (e) => {
     const id = employee._id;
-    const response = await fetch(`http://localhost:8080/api/delete/${id}`, {
+    const url = `http://localhost:8080/api/delete/${id}`;
+    const response = await fetch(`${url}`, {
       method: "DELETE",
       headers: {
         "Content-type": "application/json",

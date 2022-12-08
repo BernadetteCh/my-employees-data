@@ -10,12 +10,11 @@ const EditEquipment = () => {
   const navigate = useNavigate();
   const params = useParams();
   const id = params.id;
+  const url = `http://localhost:8080/equipment/edit/equipment/${id}`;
 
   useEffect(() => {
     const fetchEquipmentData = async () => {
-      const response = await fetch(
-        `http://localhost:8080/equipment/edit/equipment/${id}`
-      );
+      const response = await fetch(`${url}`);
       const data = await response.json();
 
       if (!response.ok) {
@@ -34,16 +33,13 @@ const EditEquipment = () => {
   };
   const editEquipment = async (e) => {
     e.preventDefault();
-    const response = await fetch(
-      `http://localhost:8080/equipment/edit/equipment/${id}`,
-      {
-        method: "PUT",
-        headers: {
-          "Content-type": "application/json",
-        },
-        body: JSON.stringify({ equipmentData }),
-      }
-    );
+    const response = await fetch(`${url}`, {
+      method: "PUT",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify({ equipmentData }),
+    });
     if (!response.ok) {
       console.log(`Èrror:${response.status}`);
     }
