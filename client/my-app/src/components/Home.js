@@ -51,16 +51,13 @@ const Home = () => {
       <p>Sort List </p>
       <SortList updateData={updateEmployeeData} />
       <p>Filter List</p>
-      <FilterList employees={employeeData} updateData={updateEmployeeData} />
+      <FilterList updateData={updateEmployeeData} />
       <EmployeeTable
         employeesData={employeeData}
         renderData={updateEmployeeData}
       />
       <h2>Equipment Table</h2>
-      <FilterEquipment
-        equipments={equipmentData}
-        updateData={updateEquipmentData}
-      />
+      <FilterEquipment updateData={updateEquipmentData} />
       <EquipmentTable
         equipmentData={equipmentData}
         updateData={updateEquipmentData}

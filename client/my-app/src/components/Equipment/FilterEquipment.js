@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Input from "../Input";
 
-const FiltreEquipment = ({ equipments, updateData }) => {
+const FiltreEquipment = ({ updateData }) => {
   const [filterValue, setFilterValue] = useState("");
   const [inputValue, setInputValue] = useState("");
 

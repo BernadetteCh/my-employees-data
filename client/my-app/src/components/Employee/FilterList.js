@@ -28,7 +28,7 @@ const displayAllEmployees = async (updateData) => {
   updateData(data);
 };
 
-const FilterList = ({ employees, updateData }) => {
+const FilterList = ({ updateData }) => {
   const [filterValue, setFilterValue] = useState("");
   const [inputValue, setInputValue] = useState("");
 
