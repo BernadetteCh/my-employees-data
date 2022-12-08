@@ -60,7 +60,7 @@ router.post("/filter", async (req, res) => {
     [req.body.filterValue]: { $regex: req.body.inputValue },
   })
     .then((result) => {
-      res.status(200).send(result);
+      res.status(200).json(result);
     })
     .catch((error) => res.status(400).json({ error }));
 });
