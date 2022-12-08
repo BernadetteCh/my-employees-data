@@ -38,6 +38,7 @@ const Home = () => {
   }, []);
 
   const updateEmployeeData = (data) => {
+    console.log(data);
     setEmployeeData(data);
   };
   const updateEquipmentData = (data) => {
