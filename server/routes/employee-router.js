@@ -1,4 +1,5 @@
 const express = require("express");
+const { db } = require("../db/employeeSchema");
 const router = express.Router();
 const Employee = require("../db/employeeSchema");
 const Equipment = require("../db/equipmentSchema");
@@ -107,11 +108,14 @@ router.get("/edit/:id", async (req, res) => {
 });
 
 router.delete("/delete/:id", async (req, res) => {
-  //console.log(req.body.employee.equipment);
-  // await Employee.findOneAndDelete({ _id: req.params.id });
+  let maxAmount = req.body.employee.equipment.amount;
+  let amountOfEmployee = req.body.employee.amount;
+  let sumofEquipment = parseInt(amountOfEmployee) + parseInt(maxAmount);
   await Employee.findOneAndDelete({ _id: req.params.id });
+
   await Employee.find({ _id: req.params.id })
     .then((result) => {
+      console.log(result);
       res.status(200).json(result);
     })
     .catch((error) => {
