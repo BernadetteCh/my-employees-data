@@ -31,6 +31,22 @@ router.post("/create", async (req, res) => {
   }
 });
 
+router.put("/upDateEquipment", async (req, res) => {
+  const equipment = await Equipment.findById({ _id: req.body.equipment }).then(
+    (equipment) => {
+      let sum = parseInt(equipment.amount) - parseInt(req.body.amount);
+      equipment.amount = sum;
+
+      return equipment;
+    }
+  );
+  console.log(equipment);
+  await Equipment.findByIdAndUpdate(
+    { _id: req.body.equipment },
+    { $set: { amount: equipment.amount } }
+  );
+});
+
 router.put("/assignList", async (req, res) => {
   console.log(req.body);
 });

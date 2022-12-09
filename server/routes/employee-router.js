@@ -14,14 +14,23 @@ router.get("/", async (req, res) => {
 });
 
 router.post("/save/newemployee", async (req, res) => {
-  const { firstName, secondName, lastName, position, level } =
-    req.body.inputValue;
+  const {
+    firstName,
+    secondName,
+    lastName,
+    position,
+    level,
+    equipment,
+    amount,
+  } = req.body.inputValue;
   const newEmployee = new Employee({
     firstName: firstName,
     secondName: secondName,
     lastName: lastName,
     position: position,
     level: level,
+    equipment: equipment,
+    amount: amount,
   });
   try {
     await newEmployee.save();
@@ -33,7 +42,15 @@ router.post("/save/newemployee", async (req, res) => {
 
 router.put("/edit/:id", async (req, res) => {
   console.log("From Body " + req.body.data);
-  const { firstName, secondName, lastName, position, level } = req.body.data;
+  const {
+    firstName,
+    secondName,
+    lastName,
+    position,
+    level,
+    equipment,
+    amount,
+  } = req.body.data;
   await Employee.findByIdAndUpdate(
     { _id: req.params.id },
     {
@@ -43,6 +60,8 @@ router.put("/edit/:id", async (req, res) => {
         lastName: lastName,
         position: position,
         level: level,
+        equipment: equipment,
+        amount: amount,
       },
     }
   )

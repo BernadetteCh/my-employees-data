@@ -15,35 +15,42 @@ const Create = ({ equipmentData }) => {
     position: "",
     level: "",
     equipment: "",
-    amount: "",
+    amount: 0,
   });
-  const [num, setNum] = useState(0);
+  const [max, setMax] = useState(0);
 
   const upDateInputValue = (e) => {
     setInputValue((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
   const selectEquipment = (e) => {
+    console.log(e.target.value);
     setMaxAmount(e.target.value);
   };
 
   const setMaxAmount = (value) => {
     equipmentData.map((equipment) => {
-      if (equipment.name === value) {
-        setInputValue((prev) => ({
-          ...prev,
-          ["equipment"]: value,
-          ["amount"]: equipment.amount,
-        }));
+      if (equipment._id === value) {
+        setInputValue(
+          (prev) => ({
+            ...prev,
+            equipment: value,
+            // amount: equipment.amount,
+          }),
+          setMax(equipment.amount)
+        );
       }
     });
   };
   const upDateAmountOfEquipment = (e) => {
-    console.log(e.target);
-    setNum(e.target.value);
+    setInputValue((prev) => ({
+      ...prev,
+      amount: e.target.value,
+    }));
   };
 
   const saveData = async (e) => {
     e.preventDefault(e);
+    console.log(max);
     const response = await fetch(`${url}`, {
       method: "POST",
       headers: {
@@ -53,31 +60,39 @@ const Create = ({ equipmentData }) => {
         inputValue,
       }),
     });
+    const putUrl = `http://localhost:8080/equipment/upDateEquipment`;
+    const putResponse = await fetch(`${putUrl}`, {
+      method: "PUT",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify({
+        amount: inputValue.amount,
+        max: max,
+        equipment: inputValue.equipment,
+      }),
+    });
 
     if (!response.ok) {
       console.log(`Error: ${response.status}`);
       console.log(`${response.statusText}`);
     }
-
-    const { firstName, secondName, lastName, position, level } = inputValue;
-    if (
-      firstName !== "" ||
-      secondName !== "" ||
-      lastName !== "" ||
-      position !== "" ||
-      level !== ""
-    ) {
-      setInputValue({
-        firstName: "",
-        secondName: "",
-        lastName: "",
-        position: "",
-        level: "",
-      });
+    if (!putResponse) {
+      console.log(`Error: ${response.status}`);
     }
+
+    setInputValue({
+      firstName: "",
+      secondName: "",
+      lastName: "",
+      position: "",
+      level: "",
+      equipment: "",
+      amount: 0,
+    });
     navigate("/");
   };
-  console.log(inputValue);
+
   return (
     <div className="form-create">
       <h2>Create a new Employee</h2>
@@ -144,7 +159,7 @@ const Create = ({ equipmentData }) => {
           {equipmentData.map((equipment, index) => {
             return (
               <Option
-                value={equipment.name}
+                value={equipment._id}
                 option={equipment.name}
                 key={index}
               />
@@ -153,8 +168,8 @@ const Create = ({ equipmentData }) => {
         </select>
         <Input
           min={0}
-          max={parseInt(inputValue.amount)}
-          value={num}
+          max={max}
+          value={inputValue.amount}
           type="number"
           name="amount"
           upDateInputValue={upDateAmountOfEquipment}
