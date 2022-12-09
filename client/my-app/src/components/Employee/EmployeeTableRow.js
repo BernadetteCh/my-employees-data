@@ -11,6 +11,7 @@ const TableRow = ({ employee, employees, myKey, updateData }) => {
       headers: {
         "Content-type": "application/json",
       },
+      body: JSON.stringify({ employee }),
     });
 
     if (!response.ok) {
