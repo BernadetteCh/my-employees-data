@@ -7,6 +7,7 @@ import CreateEquipment from "./components/Equipment/CreateEquipment";
 import Home from "../src/components/Home";
 import Edit from "../src/components/Employee/Edit";
 import EditEquipment from "./components/Equipment/EditEquipment";
+import EquipmentEmployeeList from "./components/EquipmentEmployeeList";
 import "./App.css";
 
 function App() {
@@ -31,6 +32,10 @@ function App() {
           ></Route>
           <Route path="/create-equipment" element={<CreateEquipment />}></Route>
           <Route path="/edit/equipment/:id" element={<EditEquipment />}></Route>
+          <Route
+            path="/amount-list"
+            element={<EquipmentEmployeeList />}
+          ></Route>
           <Route path="/edit/:id" element={<Edit />}></Route>
         </Routes>
       </BrowserRouter>
