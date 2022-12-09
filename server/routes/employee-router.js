@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Employee = require("../db/employeeSchema");
+const Equipment = require("../db/equipmentSchema");
 
 router.get("/", async (req, res) => {
   await Employee.find()
@@ -105,8 +106,10 @@ router.get("/edit/:id", async (req, res) => {
 });
 
 router.delete("/delete/:id", async (req, res) => {
+  //console.log(req.body.employee.equipment);
+  // await Employee.findOneAndDelete({ _id: req.params.id });
   await Employee.findOneAndDelete({ _id: req.params.id });
-  await Employee.find({})
+  await Employee.find({ _id: req.params.id })
     .then((result) => {
       res.status(200).json(result);
     })
