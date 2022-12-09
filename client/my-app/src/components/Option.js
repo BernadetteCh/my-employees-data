@@ -1,11 +1,7 @@
 import React from "react";
 
-const Option = ({ value, option, name }) => {
-  return (
-    <option value={value} name={name}>
-      {option}
-    </option>
-  );
+const Option = ({ value, option }) => {
+  return <option value={value}>{option}</option>;
 };
 
 export default Option;

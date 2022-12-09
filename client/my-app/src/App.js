@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Navbar from "./components/Navbar";
@@ -10,13 +10,25 @@ import EditEquipment from "./components/Equipment/EditEquipment";
 import "./App.css";
 
 function App() {
+  const [equipment, setEquipment] = useState([]);
+
+  const dataSetter = (equipment) => {
+    setEquipment(equipment);
+  };
+
   return (
     <div>
       <BrowserRouter>
         <Navbar />
         <Routes>
-          <Route path="/" element={<Home />}></Route>
-          <Route path="/create" element={<CreateEmployee />}></Route>
+          <Route
+            path="/"
+            element={<Home dataSetterEquipment={dataSetter} />}
+          ></Route>
+          <Route
+            path="/create"
+            element={<CreateEmployee equipmentData={equipment} />}
+          ></Route>
           <Route path="/create-equipment" element={<CreateEquipment />}></Route>
           <Route path="/edit/equipment/:id" element={<EditEquipment />}></Route>
           <Route path="/edit/:id" element={<Edit />}></Route>

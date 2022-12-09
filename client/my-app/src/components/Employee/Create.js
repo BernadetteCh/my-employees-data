@@ -3,8 +3,9 @@ import { useNavigate } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import "../../App.css";
 import Input from "../Input";
+import Option from "../Option";
 
-const Create = () => {
+const Create = ({ equipmentData }) => {
   const url = "http://localhost:8080/api/save/newemployee";
   const navigate = useNavigate();
   const [inputValue, setInputValue] = useState({
@@ -13,10 +14,32 @@ const Create = () => {
     lastName: "",
     position: "",
     level: "",
+    equipment: "",
+    amount: "",
   });
+  const [num, setNum] = useState(0);
 
   const upDateInputValue = (e) => {
     setInputValue((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+  const selectEquipment = (e) => {
+    setMaxAmount(e.target.value);
+  };
+
+  const setMaxAmount = (value) => {
+    equipmentData.map((equipment) => {
+      if (equipment.name === value) {
+        setInputValue((prev) => ({
+          ...prev,
+          ["equipment"]: value,
+          ["amount"]: equipment.amount,
+        }));
+      }
+    });
+  };
+  const upDateAmountOfEquipment = (e) => {
+    console.log(e.target);
+    setNum(e.target.value);
   };
 
   const saveData = async (e) => {
@@ -54,7 +77,7 @@ const Create = () => {
     }
     navigate("/");
   };
-
+  console.log(inputValue);
   return (
     <div className="form-create">
       <h2>Create a new Employee</h2>
@@ -115,6 +138,27 @@ const Create = () => {
         <label htmlFor="senior-developer" className="me-5">
           Senior Developer
         </label>
+        <label className="d-block">Select an Equipment for an Employee:</label>
+        <select className="me-5" onChange={selectEquipment}>
+          <option defaultValue={"select"}>--Select--</option>
+          {equipmentData.map((equipment, index) => {
+            return (
+              <Option
+                value={equipment.name}
+                option={equipment.name}
+                key={index}
+              />
+            );
+          })}
+        </select>
+        <Input
+          min={0}
+          max={parseInt(inputValue.amount)}
+          value={num}
+          type="number"
+          name="amount"
+          upDateInputValue={upDateAmountOfEquipment}
+        />
         <Button type="submit" className="submit-button" onClick={saveData}>
           Create new Employee
         </Button>

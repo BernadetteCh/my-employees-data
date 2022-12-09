@@ -25,7 +25,7 @@ const fetchEquipmentData = async (dataSetter) => {
   dataSetter(data);
 };
 
-const Home = () => {
+const Home = ({ dataSetterEquipment }) => {
   const [employeeData, setEmployeeData] = useState([]);
   const [equipmentData, setEquipmentData] = useState([]);
 
@@ -42,8 +42,9 @@ const Home = () => {
     setEmployeeData(data);
   };
   const updateEquipmentData = (data) => {
-    setEquipmentData(data);
+    setEquipmentData(data, dataSetterEquipment(data));
   };
+
   return (
     <div>
       <h1 style={{ textAlign: "center" }}>My Employees Data 🙃🍀</h1>
