@@ -6,7 +6,11 @@ const employeeSchema = new mongoose.Schema({
   lastName: String,
   position: String,
   level: String,
-  equipment: String,
+  equipment: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "equipment",
+    required: true,
+  },
   amount: String,
 });
 

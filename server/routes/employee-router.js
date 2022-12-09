@@ -4,8 +4,9 @@ const Employee = require("../db/employeeSchema");
 const Equipment = require("../db/equipmentSchema");
 
 router.get("/", async (req, res) => {
-  await Employee.find()
+  await Employee.find({})
     .sort({ firstName: 1 })
+    .populate("equipment")
     .then((result) => {
       res.status(200).json(result);
     })

@@ -5,42 +5,54 @@
       "secondName": "Silva",
       "lastName": "Santos Junior",
       "position": "Stürmer",
-      "level": "junior-developer"
+      "level": "junior-developer",
+      "equipment": "6390fc2beba15cc80efa0950",
+      "amount": 1
     },
     {
       "firstName": "Christiano",
       "secondName": "Ronaldo",
       "lastName": "Santos Aveiro",
       "position": "FlügelSpieler",
-      "level": "intern"
+      "level": "intern",
+      "equipment": "6390fc2beba15cc80efa0950",
+      "amount": 1
     },
     {
       "firstName": "Rafael",
       "secondName": "Nadal",
       "lastName": "Parera",
       "position": "Tennisplayer",
-      "level": "intern"
+      "level": "intern",
+      "equipment": "6390fcec33b7737431e5c327",
+      "amount": 1
     },
     {
       "firstName": "Lionel",
       "secondName": "Andres Leo",
       "lastName": "Messi",
       "position": "SoccerPlayer",
-      "level": "senior-developer"
+      "level": "senior-developer",
+      "equipment": "6390fcec33b7737431e5c327",
+      "amount": 1
     },
     {
       "firstName": "Muhammed",
       "secondName": "Abdulbasid",
       "lastName": "Salman",
       "position": "Code-Cool student",
-      "level": "junior-developer"
+      "level": "junior-developer",
+      "equipment": "6390fc2beba15cc80efa0950",
+      "amount": 1
     },
     {
       "firstName": "Zlatan",
       "secondName": "",
       "lastName": "Ibrahimović ",
       "position": "Stürmer",
-      "level": "senior-developer"
+      "level": "senior-developer",
+      "equipment": "6390fc2beba15cc80efa0950",
+      "amount": 1
     }
   ]
 }
