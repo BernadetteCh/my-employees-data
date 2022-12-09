@@ -44,7 +44,8 @@ const Home = ({ dataSetterEquipment }) => {
   const updateEquipmentData = (data) => {
     setEquipmentData(data, dataSetterEquipment(data));
   };
-
+  console.log(employeeData);
+  console.log(equipmentData);
   return (
     <div>
       <h1 style={{ textAlign: "center" }}>My Employees Data 🙃🍀</h1>
