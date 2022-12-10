@@ -60,7 +60,7 @@ const Create = ({ equipmentData }) => {
         inputValue,
       }),
     });
-    const putUrl = `http://localhost:8080/equipment/upDateEquipment`;
+    const putUrl = `http://localhost:8080/equipment/upDateEquipment/createEmployee`;
     const putResponse = await fetch(`${putUrl}`, {
       method: "PUT",
       headers: {
