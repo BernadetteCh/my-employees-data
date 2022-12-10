@@ -4,8 +4,22 @@ import { Link } from "react-router-dom";
 
 const TableRow = ({ employee, employees, myKey, updateData }) => {
   const deleteEmployee = async (e) => {
+    e.preventDefault();
+    console.log(employee.equipment);
     const id = employee._id;
+    const putUrl = `http://localhost:8080/equipment/deleteRequest`;
+    const putresponse = await fetch(`${putUrl}`, {
+      method: "PUT",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify({
+        equipment: employee.equipment,
+        amountOfEmployee: employee.amount,
+      }),
+    });
     const url = `http://localhost:8080/api/delete/${id}`;
+
     const response = await fetch(`${url}`, {
       method: "DELETE",
       headers: {

@@ -46,6 +46,17 @@ router.put("/upDateEquipment", async (req, res) => {
     { $set: { amount: equipment.amount } }
   );
 });
+router.put("/deleteRequest", async (req, res) => {
+  let sum =
+    parseInt(req.body.amountOfEmployee) + parseInt(req.body.equipment.amount);
+  await Equipment.findOneAndUpdate(
+    { _id: req.body.equipment._id },
+    { $set: { amount: sum } }
+  );
+  await Equipment.find({}).then((result) => {
+    res.status(200).json(result);
+  });
+});
 
 router.put("/assignList", async (req, res) => {
   console.log(req.body);

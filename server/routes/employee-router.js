@@ -108,9 +108,14 @@ router.get("/edit/:id", async (req, res) => {
 });
 
 router.delete("/delete/:id", async (req, res) => {
-  let maxAmount = req.body.employee.equipment.amount;
-  let amountOfEmployee = req.body.employee.amount;
-  let sumofEquipment = parseInt(amountOfEmployee) + parseInt(maxAmount);
+  // let maxAmount = req.body.employee.equipment.amount;
+  // let amountOfEmployee = req.body.employee.amount;
+  // let sumofEquipment = parseInt(amountOfEmployee) + parseInt(maxAmount);
+  // i have to delete the employee
+  //find out how much he amounts and add also addier es zum passenden equipment
+
+  //so delete and put request ?
+
   await Employee.findOneAndDelete({ _id: req.params.id });
 
   await Employee.find({ _id: req.params.id })

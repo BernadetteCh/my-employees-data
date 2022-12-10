@@ -1,13 +1,11 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router";
 import Button from "react-bootstrap/Button";
 import "../../App.css";
 import Input from "../Input";
 import Option from "../Option";
 
 const Create = ({ equipmentData }) => {
-  const url = "http://localhost:8080/api/save/newemployee";
-  const navigate = useNavigate();
   const [inputValue, setInputValue] = useState({
     firstName: "",
     secondName: "",
@@ -18,6 +16,7 @@ const Create = ({ equipmentData }) => {
     amount: 0,
   });
   const [max, setMax] = useState(0);
+  const navigate = useNavigate();
 
   const upDateInputValue = (e) => {
     setInputValue((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -39,6 +38,7 @@ const Create = ({ equipmentData }) => {
           setMax(equipment.amount)
         );
       }
+      return true;
     });
   };
   const upDateAmountOfEquipment = (e) => {
@@ -49,8 +49,8 @@ const Create = ({ equipmentData }) => {
   };
 
   const saveData = async (e) => {
-    e.preventDefault(e);
-    console.log(max);
+    e.preventDefault();
+    const url = "http://localhost:8080/api/save/newemployee";
     const response = await fetch(`${url}`, {
       method: "POST",
       headers: {
@@ -77,7 +77,7 @@ const Create = ({ equipmentData }) => {
       console.log(`Error: ${response.status}`);
       console.log(`${response.statusText}`);
     }
-    if (!putResponse) {
+    if (!putResponse.ok) {
       console.log(`Error: ${response.status}`);
     }
 
@@ -90,6 +90,7 @@ const Create = ({ equipmentData }) => {
       equipment: "",
       amount: 0,
     });
+
     navigate("/");
   };
 
