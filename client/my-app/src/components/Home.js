@@ -36,7 +36,7 @@ const Home = ({ dataSetterEquipment }) => {
     };
 
     fetchData();
-  }, [equipmentData]);
+  }, [employeeData]);
 
   const updateEmployeeData = (data) => {
     setEmployeeData(data);
