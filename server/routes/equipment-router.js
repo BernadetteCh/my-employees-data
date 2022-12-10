@@ -1,10 +1,6 @@
 const express = require("express");
-// const { model } = require("mongoose");
 const router = express.Router();
 const Equipment = require("../db/equipmentSchema");
-// const Module = require("../db/equipmentSchema");
-// const Equipment = Module.Equipment;
-// const Employee = Module.Employee;
 
 router.get("/", async (req, res) => {
   await Equipment.find()
@@ -31,7 +27,7 @@ router.post("/create", async (req, res) => {
   }
 });
 
-router.put("/upDateEquipment", async (req, res) => {
+router.put("/upDateEquipment/createEmployee", async (req, res) => {
   const equipment = await Equipment.findById({ _id: req.body.equipment }).then(
     (equipment) => {
       let sum = parseInt(equipment.amount) - parseInt(req.body.amount);
@@ -40,13 +36,13 @@ router.put("/upDateEquipment", async (req, res) => {
       return equipment;
     }
   );
-  console.log(equipment);
+
   await Equipment.findByIdAndUpdate(
     { _id: req.body.equipment },
     { $set: { amount: equipment.amount } }
   );
 });
-router.put("/deleteRequest", async (req, res) => {
+router.put("/updateEquipment/deleteEmployee", async (req, res) => {
   let sum =
     parseInt(req.body.amountOfEmployee) + parseInt(req.body.equipment.amount);
   await Equipment.findOneAndUpdate(
