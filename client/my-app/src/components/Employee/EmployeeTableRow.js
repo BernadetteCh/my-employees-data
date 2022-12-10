@@ -4,10 +4,9 @@ import { Link } from "react-router-dom";
 
 const TableRow = ({ employee, employees, myKey, updateData }) => {
   const deleteEmployee = async (e) => {
-    e.preventDefault();
     console.log(employee.equipment);
     const id = employee._id;
-    const putUrl = `http://localhost:8080/equipment/deleteRequest`;
+    const putUrl = `http://localhost:8080/equipment/updateEquipment/deleteEmployee`;
     const putresponse = await fetch(`${putUrl}`, {
       method: "PUT",
       headers: {
@@ -28,6 +27,9 @@ const TableRow = ({ employee, employees, myKey, updateData }) => {
       body: JSON.stringify({ employee }),
     });
 
+    if (!putresponse.ok) {
+      console.log(`Error: ${putresponse.status} ${putresponse.statusText}`);
+    }
     if (!response.ok) {
       console.log(`Error: ${response.status} ${response.statusText}`);
     } else {
@@ -46,7 +48,7 @@ const TableRow = ({ employee, employees, myKey, updateData }) => {
       <td>{employee.level}</td>
       <td>
         <Link to={`/edit/${employee._id}`}>Edit</Link> |
-        <Button variant="secondary" onClick={deleteEmployee}>
+        <Button variant="secondary" type="submit" onClick={deleteEmployee}>
           Delete
         </Button>
       </td>
