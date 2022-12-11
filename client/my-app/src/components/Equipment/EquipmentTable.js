@@ -3,16 +3,20 @@ import Table from "react-bootstrap/Table";
 import EquipmentTableRow from "./EquipmentTableRow";
 import "../../App.css";
 
-const EquipmentTable = ({ equipmentData, updateData, employeeData }) => {
+const EquipmentTable = ({
+  equipmentData,
+  updateEquipmentData,
+  employeeData,
+}) => {
   const updateEquipmentList = (data) => {
-    updateData(data);
+    updateEquipmentData(data);
   };
   const sortEquipment = async (key, method) => {
     const response = await fetch(
       `http://localhost:8080/equipment/sort/${key}/${method}`
     );
     const data = await response.json();
-    updateData(data);
+    updateEquipmentData(data);
   };
   return (
     <Table striped>
@@ -77,8 +81,7 @@ const EquipmentTable = ({ equipmentData, updateData, employeeData }) => {
                   equipments={equipmentData}
                   key={equipment._id}
                   myKey={index}
-                  updateData={updateEquipmentList}
-                  employeeData={employeeData}
+                  updateEquipmentData={updateEquipmentList}
                 />
               );
             })}
