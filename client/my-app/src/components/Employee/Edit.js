@@ -115,15 +115,6 @@ const Edit = () => {
             option={"Senior Developer"}
             name={"senior-developer"}
           />
-          {/* <option value="intern" name="intern">
-            Intern
-          </option>
-          <option value="junior-developer" name="junior-developer">
-            Junior-Developer
-          </option>
-          <option value="senior-developer" name="senior-developer">
-            Senior-Developer
-          </option> */}
         </select>
         <Button type="submit" className="d-block mt-5" onClick={editEmployee}>
           Edit
