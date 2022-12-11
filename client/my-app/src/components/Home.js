@@ -25,7 +25,7 @@ const fetchEquipmentData = async (dataSetter) => {
   dataSetter(data);
 };
 
-const Home = ({ dataSetterEquipment }) => {
+const Home = () => {
   const [employeeData, setEmployeeData] = useState([]);
   const [equipmentData, setEquipmentData] = useState([]);
 
@@ -42,7 +42,7 @@ const Home = ({ dataSetterEquipment }) => {
     setEmployeeData(data);
   };
   const updateEquipmentData = (data) => {
-    setEquipmentData(data, dataSetterEquipment(data));
+    setEquipmentData(data);
   };
 
   const updateBothTables = (employees, equipments) => {
@@ -58,7 +58,6 @@ const Home = ({ dataSetterEquipment }) => {
       <FilterList updateData={updateEmployeeData} />
       <EmployeeTable
         employeesData={employeeData}
-        equipmentData={equipmentData}
         updateBothTables={updateBothTables}
       />
       <h2>Equipment Table</h2>
