@@ -54,10 +54,6 @@ router.put("/updateEquipment/deleteEmployee", async (req, res) => {
   });
 });
 
-router.put("/assignList", async (req, res) => {
-  console.log(req.body);
-});
-
 router.get("/edit/equipment/:id", async (req, res) => {
   await Equipment.findById({ _id: req.params.id })
     .then((result) => {
