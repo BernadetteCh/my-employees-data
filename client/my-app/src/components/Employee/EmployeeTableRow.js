@@ -3,7 +3,7 @@ import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
 
 const TableRow = ({ employee, employees, myKey, updateBothTables }) => {
-  const deleteEmployee = async (e) => {
+  const deleteEmployee = async () => {
     const id = employee._id;
     const putUrl = `http://localhost:8080/equipment/updateEquipment/deleteEmployee`;
     const putresponse = await fetch(`${putUrl}`, {
@@ -16,8 +16,8 @@ const TableRow = ({ employee, employees, myKey, updateBothTables }) => {
         amountOfEmployee: employee.amount,
       }),
     });
-    const url = `http://localhost:8080/api/delete/${id}`;
 
+    const url = `http://localhost:8080/api/delete/${id}`;
     const response = await fetch(`${url}`, {
       method: "DELETE",
       headers: {
@@ -32,10 +32,10 @@ const TableRow = ({ employee, employees, myKey, updateBothTables }) => {
     if (!response.ok) {
       console.log(`Error: ${response.status} ${response.statusText}`);
     } else {
-      const newList = [...employees];
-      newList.splice(myKey, 1);
+      const newEmployeesData = [...employees];
+      newEmployeesData.splice(myKey, 1);
       const newEquipmentAmountData = await putresponse.json();
-      updateBothTables(newList, newEquipmentAmountData);
+      updateBothTables(newEmployeesData, newEquipmentAmountData);
     }
   };
 
