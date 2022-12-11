@@ -11,7 +11,7 @@ const fetchEquipmentData = async (dataSetter) => {
   const data = await response.json();
   dataSetter(data);
 };
-const Create = () => {
+const CreateEmployee = () => {
   const [inputValue, setInputValue] = useState({
     firstName: "",
     secondName: "",
@@ -200,4 +200,4 @@ const Create = () => {
   );
 };
 
-export default Create;
+export default CreateEmployee;

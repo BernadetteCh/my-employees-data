@@ -5,7 +5,7 @@ import Button from "react-bootstrap/Button";
 import Input from "../Input";
 import Option from "../Option";
 
-const Edit = () => {
+const EditEmployee = () => {
   const [data, setData] = useState([]);
 
   const navigate = useNavigate();
@@ -124,4 +124,4 @@ const Edit = () => {
   );
 };
 
-export default Edit;
+export default EditEmployee;
