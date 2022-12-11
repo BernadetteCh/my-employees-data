@@ -40,9 +40,13 @@ router.put("/upDateEquipment/createEmployee", async (req, res) => {
     { _id: req.body.equipment },
     { $set: { amount: equipment.amount } }
   );
-  await Equipment.find({}).then((result) => {
-    res.status(200).json(result);
-  });
+  await Equipment.find({})
+    .then((result) => {
+      res.status(200).json(result);
+    })
+    .catch((error) => {
+      res.status(404).json({ error });
+    });
 });
 
 router.put("/updateEquipment/deleteEmployee", async (req, res) => {
