@@ -2,10 +2,10 @@ import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Navbar from "./components/Navbar";
-import CreateEmployee from "../src/components/Employee/Create";
+import CreateEmployee from "./components/Employee/CreateEmployee";
 import CreateEquipment from "./components/Equipment/CreateEquipment";
 import Home from "../src/components/Home";
-import Edit from "../src/components/Employee/Edit";
+import EditEmployee from "./components/Employee/EditEmployee";
 import EditEquipment from "./components/Equipment/EditEquipment";
 import EquipmentEmployeeList from "./components/EquipmentEmployeeList";
 import "./App.css";
@@ -24,7 +24,7 @@ function App() {
             path="/amount-list"
             element={<EquipmentEmployeeList />}
           ></Route>
-          <Route path="/edit/:id" element={<Edit />}></Route>
+          <Route path="/edit/:id" element={<EditEmployee />}></Route>
         </Routes>
       </BrowserRouter>
     </div>
