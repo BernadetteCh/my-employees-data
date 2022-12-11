@@ -44,7 +44,6 @@ const Home = () => {
   const updateEquipmentData = (data) => {
     setEquipmentData(data);
   };
-
   const updateBothTables = (employees, equipments) => {
     setEmployeeData(employees, setEquipmentData(equipments));
   };
@@ -64,8 +63,7 @@ const Home = () => {
       <FilterEquipment updateData={updateEquipmentData} />
       <EquipmentTable
         equipmentData={equipmentData}
-        updateData={updateEquipmentData}
-        employeeData={employeeData}
+        updateEquipmentData={updateEquipmentData}
       />
     </div>
   );
