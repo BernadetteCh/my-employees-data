@@ -43,7 +43,6 @@ router.post("/save/newemployee", async (req, res) => {
 });
 
 router.put("/edit/:id", async (req, res) => {
-  console.log("From Body " + req.body.data);
   const {
     firstName,
     secondName,
@@ -68,11 +67,9 @@ router.put("/edit/:id", async (req, res) => {
     }
   )
     .then((result) => {
-      console.log(result);
       res.status(200).json(result);
     })
     .catch((error) => {
-      console.log(error);
       res.status(404).json({ error });
     });
 });
@@ -109,9 +106,8 @@ router.get("/edit/:id", async (req, res) => {
 router.delete("/delete/:id", async (req, res) => {
   await Employee.findOneAndDelete({ _id: req.params.id });
 
-  await Employee.find({ _id: req.params.id })
+  await Employee.find({})
     .then((result) => {
-      console.log(result);
       res.status(200).json(result);
     })
     .catch((error) => {
