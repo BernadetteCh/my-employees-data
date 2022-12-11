@@ -6,13 +6,12 @@ const EquipmentTableRow = ({
   equipment,
   equipments,
   myKey,
-  updateData,
-  employeeData,
+  updateEquipmentData,
 }) => {
   const deleteEquipment = () => {
-    const newList = [...equipments];
-    newList.splice(myKey, 1);
-    updateData(newList);
+    const newEquipmentList = [...equipments];
+    newEquipmentList.splice(myKey, 1);
+    updateEquipmentData(newEquipmentList);
   };
   return (
     <tr>
