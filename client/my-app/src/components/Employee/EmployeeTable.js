@@ -2,7 +2,7 @@ import React from "react";
 import Table from "react-bootstrap/Table";
 import TableRow from "./EmployeeTableRow";
 
-const EmployeeTable = ({ employeesData, equipmentData, updateBothTables }) => {
+const EmployeeTable = ({ employeesData, updateBothTables }) => {
   const updateBothTablesData = (employees, equipments) => {
     updateBothTables(employees, equipments);
   };
@@ -26,7 +26,6 @@ const EmployeeTable = ({ employeesData, equipmentData, updateBothTables }) => {
                 <TableRow
                   employee={employee}
                   employees={employeesData}
-                  equipmentData={equipmentData}
                   key={employee._id}
                   myKey={index}
                   updateBothTables={updateBothTablesData}
