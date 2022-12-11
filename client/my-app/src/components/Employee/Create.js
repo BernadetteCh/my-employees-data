@@ -1,11 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
 import Button from "react-bootstrap/Button";
 import "../../App.css";
 import Input from "../Input";
 import Option from "../Option";
 
-const Create = ({ equipmentData }) => {
+const fetchEquipmentData = async (dataSetter) => {
+  const url = "http://localhost:8080/equipment";
+  const response = await fetch(`${url}`);
+  const data = await response.json();
+  dataSetter(data);
+};
+const Create = () => {
   const [inputValue, setInputValue] = useState({
     firstName: "",
     secondName: "",
@@ -15,14 +21,19 @@ const Create = ({ equipmentData }) => {
     equipment: "",
     amount: 0,
   });
+  const [equipmentData, setEquipmentData] = useState([]);
   const [max, setMax] = useState(0);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    fetchEquipmentData(setEquipmentData);
+  }, []);
 
   const upDateInputValue = (e) => {
     setInputValue((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
+
   const selectEquipment = (e) => {
-    console.log(e.target.value);
     setMaxAmount(e.target.value);
   };
 
@@ -41,6 +52,7 @@ const Create = ({ equipmentData }) => {
       return true;
     });
   };
+
   const upDateAmountOfEquipment = (e) => {
     setInputValue((prev) => ({
       ...prev,
@@ -79,6 +91,9 @@ const Create = ({ equipmentData }) => {
     }
     if (!putResponse.ok) {
       console.log(`Error: ${response.status}`);
+    } else {
+      const newEquipmentData = await putResponse.json();
+      console.log(newEquipmentData);
     }
 
     setInputValue({
@@ -157,15 +172,17 @@ const Create = ({ equipmentData }) => {
         <label className="d-block">Select an Equipment for an Employee:</label>
         <select className="me-5" onChange={selectEquipment}>
           <option defaultValue={"select"}>--Select--</option>
-          {equipmentData.map((equipment, index) => {
-            return (
-              <Option
-                value={equipment._id}
-                option={equipment.name}
-                key={index}
-              />
-            );
-          })}
+          {equipmentData === []
+            ? console.log("...Loading")
+            : equipmentData.map((equipment, index) => {
+                return (
+                  <Option
+                    value={equipment._id}
+                    option={equipment.name}
+                    key={index}
+                  />
+                );
+              })}
         </select>
         <Input
           min={0}
