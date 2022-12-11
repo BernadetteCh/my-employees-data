@@ -36,13 +36,17 @@ const Home = ({ dataSetterEquipment }) => {
     };
 
     fetchData();
-  }, [employeeData]);
+  }, []);
 
   const updateEmployeeData = (data) => {
     setEmployeeData(data);
   };
   const updateEquipmentData = (data) => {
     setEquipmentData(data, dataSetterEquipment(data));
+  };
+
+  const updateBothTables = (employees, equipments) => {
+    setEmployeeData(employees, setEquipmentData(equipments));
   };
 
   return (
@@ -54,7 +58,9 @@ const Home = ({ dataSetterEquipment }) => {
       <FilterList updateData={updateEmployeeData} />
       <EmployeeTable
         employeesData={employeeData}
-        renderData={updateEmployeeData}
+        equipmentData={equipmentData}
+        upDateEmployeeData={updateEmployeeData}
+        updateBothTables={updateBothTables}
       />
       <h2>Equipment Table</h2>
       <FilterEquipment updateData={updateEquipmentData} />
