@@ -11,25 +11,13 @@ import EquipmentEmployeeList from "./components/EquipmentEmployeeList";
 import "./App.css";
 
 function App() {
-  const [equipment, setEquipment] = useState([]);
-
-  const dataSetter = (equipment) => {
-    setEquipment(equipment);
-  };
-
   return (
     <div>
       <BrowserRouter>
         <Navbar />
         <Routes>
-          <Route
-            path="/"
-            element={<Home dataSetterEquipment={dataSetter} />}
-          ></Route>
-          <Route
-            path="/create"
-            element={<CreateEmployee equipmentData={equipment} />}
-          ></Route>
+          <Route path="/" element={<Home />}></Route>
+          <Route path="/create" element={<CreateEmployee />}></Route>
           <Route path="/create-equipment" element={<CreateEquipment />}></Route>
           <Route path="/edit/equipment/:id" element={<EditEquipment />}></Route>
           <Route
