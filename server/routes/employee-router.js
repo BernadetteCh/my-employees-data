@@ -1,5 +1,5 @@
 const express = require("express");
-const { db } = require("../db/employeeSchema");
+// const { db } = require("../db/employeeSchema");
 const router = express.Router();
 const Employee = require("../db/employeeSchema");
 
