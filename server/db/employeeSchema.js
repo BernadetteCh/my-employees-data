@@ -11,7 +11,7 @@ const employeeSchema = new mongoose.Schema({
     ref: "equipment",
     required: true,
   },
-  amount: String,
+  amount: Number,
 });
 
 module.exports = mongoose.model("employees", employeeSchema);
