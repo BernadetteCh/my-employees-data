@@ -1,19 +1,9 @@
 import React from "react";
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
-import { useNavigate } from "react-router";
 
-const TableRow = ({
-  employee,
-  employees,
-  equipmentData,
-  myKey,
-  upDateEmployeeData,
-  updateBothTables,
-}) => {
-  const navigate = useNavigate();
+const TableRow = ({ employee, employees, myKey, updateBothTables }) => {
   const deleteEmployee = async (e) => {
-    console.log(equipmentData); //here should be one
     const id = employee._id;
     const putUrl = `http://localhost:8080/equipment/updateEquipment/deleteEmployee`;
     const putresponse = await fetch(`${putUrl}`, {
@@ -46,7 +36,6 @@ const TableRow = ({
       newList.splice(myKey, 1);
       const newEquipmentAmountData = await putresponse.json();
       updateBothTables(newList, newEquipmentAmountData);
-      navigate("/");
     }
   };
 

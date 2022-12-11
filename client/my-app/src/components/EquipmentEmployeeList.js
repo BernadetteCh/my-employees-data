@@ -5,7 +5,6 @@ const fetchEmployeeEquipmentList = async (dataSetter) => {
   const url = `http://localhost:8080/api`;
   const response = await fetch(`${url}`);
   const data = await response.json();
-  console.log(data);
   dataSetter(data);
 };
 

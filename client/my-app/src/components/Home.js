@@ -59,7 +59,6 @@ const Home = ({ dataSetterEquipment }) => {
       <EmployeeTable
         employeesData={employeeData}
         equipmentData={equipmentData}
-        upDateEmployeeData={updateEmployeeData}
         updateBothTables={updateBothTables}
       />
       <h2>Equipment Table</h2>

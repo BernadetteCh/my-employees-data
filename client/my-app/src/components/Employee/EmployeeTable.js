@@ -2,15 +2,7 @@ import React from "react";
 import Table from "react-bootstrap/Table";
 import TableRow from "./EmployeeTableRow";
 
-const EmployeeTable = ({
-  employeesData,
-  equipmentData,
-  upDateEmployeeData,
-  updateBothTables,
-}) => {
-  const updateData = (data) => {
-    upDateEmployeeData(data);
-  };
+const EmployeeTable = ({ employeesData, equipmentData, updateBothTables }) => {
   const updateBothTablesData = (employees, equipments) => {
     updateBothTables(employees, equipments);
   };
@@ -37,7 +29,6 @@ const EmployeeTable = ({
                   equipmentData={equipmentData}
                   key={employee._id}
                   myKey={index}
-                  upDateEmployeeData={updateData}
                   updateBothTables={updateBothTablesData}
                 />
               );
