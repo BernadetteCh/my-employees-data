@@ -11,7 +11,12 @@ const fetchEquipmentData = async (dataSetter) => {
   const data = await response.json();
   dataSetter(data);
 };
-
+const fetchEmployeeData = async (dataSetter) => {
+  const response = await fetch(`http://localhost:8080/equipment/incomeage`);
+  const data = await response.json();
+  console.log(data);
+  dataSetter(data);
+};
 const CreateEmployee = () => {
   const [inputValue, setInputValue] = useState({
     firstName: "",
@@ -21,13 +26,21 @@ const CreateEmployee = () => {
     level: "",
     equipment: "",
     amount: 0,
+    age: "",
+    incomes: "",
   });
   const [equipmentData, setEquipmentData] = useState([]);
+  const [incomeageData, setIncomeAgeData] = useState([]);
   const [max, setMax] = useState(0);
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetchEquipmentData(setEquipmentData);
+    const fetchData = async () => {
+      await fetchEquipmentData(setEquipmentData);
+      await fetchEmployeeData(setIncomeAgeData);
+    };
+
+    fetchData();
   }, []);
 
   const upDateInputValue = (e) => {
@@ -36,6 +49,11 @@ const CreateEmployee = () => {
 
   const selectEquipment = (e) => {
     setMaxAmount(e.target.value);
+  };
+
+  const selectIncome = (e) => {
+    console.log(e.target.value);
+    setInputValue((prev) => ({ ...prev, incomes: e.target.value }));
   };
 
   const setMaxAmount = (value) => {
@@ -105,11 +123,13 @@ const CreateEmployee = () => {
       level: "",
       equipment: "",
       amount: 0,
+      age: "",
+      income: "",
     });
 
     navigate("/");
   };
-
+  console.log(incomeageData);
   return (
     <div className="form-create">
       <h2>Create a new Employee</h2>
@@ -192,6 +212,24 @@ const CreateEmployee = () => {
           type="number"
           name="amount"
           upDateInputValue={upDateAmountOfEquipment}
+        />
+        <p>Select an IncomeForPosition</p>
+        <select className="me-5" onChange={selectIncome}>
+          <option defaultValue={"select"}>--Select--</option>
+          {incomeageData === []
+            ? console.log("..loading")
+            : incomeageData.map((age, index) => {
+                return (
+                  <Option key={index} value={age.income} option={age.income} />
+                );
+              })}
+        </select>
+        <p>Type in an age</p>
+        <Input
+          type="number"
+          name="age"
+          value={inputValue.age}
+          upDateInputValue={upDateInputValue}
         />
         <Button type="submit" className="submit-button" onClick={saveData}>
           Create new Employee

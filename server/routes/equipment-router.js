@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Equipment = require("../db/equipmentSchema");
+const incomeAge = require("../db/ageincomeSchema");
 
 router.get("/", async (req, res) => {
   await Equipment.find()
@@ -11,7 +12,11 @@ router.get("/", async (req, res) => {
       res.status(400).json({ error });
     });
 });
-
+router.get("/incomeage", async (req, res) => {
+  await incomeAge.find({}).then((result) => {
+    res.json(result);
+  });
+});
 router.post("/create", async (req, res) => {
   const { name, type, amount } = req.body.inputValue;
   const newEquipment = new Equipment({
