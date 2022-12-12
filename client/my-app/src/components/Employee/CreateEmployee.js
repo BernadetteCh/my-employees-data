@@ -11,6 +11,12 @@ const fetchEquipmentData = async (dataSetter) => {
   const data = await response.json();
   dataSetter(data);
 };
+const fetchIncomeData = async (dataSetter) => {
+  const url = "http://localhost:8080/income";
+  const response = await fetch(`${url}`);
+  const data = await response.json();
+  dataSetter(data);
+};
 
 const CreateEmployee = () => {
   const [inputValue, setInputValue] = useState({
@@ -21,13 +27,20 @@ const CreateEmployee = () => {
     level: "",
     equipment: "",
     amount: 0,
+    income: "",
   });
-  const [equipmentData, setEquipmentData] = useState([]);
+  const [equipmentData, setEquipmentData] = useState();
+  const [incomeData, setIncomeData] = useState();
   const [max, setMax] = useState(0);
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetchEquipmentData(setEquipmentData);
+    const fetchData = async () => {
+      await fetchEquipmentData(setEquipmentData);
+      await fetchIncomeData(setIncomeData);
+    };
+
+    fetchData();
   }, []);
 
   const upDateInputValue = (e) => {
@@ -36,6 +49,9 @@ const CreateEmployee = () => {
 
   const selectEquipment = (e) => {
     setMaxAmount(e.target.value);
+  };
+  const selectIncome = (e) => {
+    setInputValue((prev) => ({ ...prev, ["income"]: e.target.value }));
   };
 
   const setMaxAmount = (value) => {
@@ -105,6 +121,7 @@ const CreateEmployee = () => {
       level: "",
       equipment: "",
       amount: 0,
+      income: "",
     });
 
     navigate("/");
@@ -173,7 +190,7 @@ const CreateEmployee = () => {
         <label className="d-block">Select an Equipment for an Employee:</label>
         <select className="me-5" onChange={selectEquipment}>
           <option defaultValue={"select"}>--Select--</option>
-          {equipmentData === []
+          {equipmentData === undefined
             ? console.log("...Loading")
             : equipmentData.map((equipment, index) => {
                 return (
@@ -193,6 +210,21 @@ const CreateEmployee = () => {
           name="amount"
           upDateInputValue={upDateAmountOfEquipment}
         />
+        <p>Select an Income</p>
+        {incomeData === undefined ? (
+          console.log("...loading")
+        ) : (
+          <select className="me-5" onChange={selectIncome}>
+            {" "}
+            <option value={incomeData[0].seniorDeveloper}>
+              {incomeData[0].seniorDeveloper}
+            </option>
+            <option value={incomeData[1].juniorDeveloper}>
+              {incomeData[1].juniorDeveloper}
+            </option>
+            <option value={incomeData[2].intern}>{incomeData[2].intern}</option>
+          </select>
+        )}
         <Button type="submit" className="submit-button" onClick={saveData}>
           Create new Employee
         </Button>

@@ -16,6 +16,7 @@ router.get("/", async (req, res) => {
 });
 
 router.post("/save/newemployee", async (req, res) => {
+  console.log(req.body);
   const {
     firstName,
     secondName,
@@ -24,6 +25,7 @@ router.post("/save/newemployee", async (req, res) => {
     level,
     equipment,
     amount,
+    income,
   } = req.body.inputValue;
   const newEmployee = new Employee({
     firstName: firstName,
@@ -33,6 +35,7 @@ router.post("/save/newemployee", async (req, res) => {
     level: level,
     equipment: equipment,
     amount: amount,
+    income: income,
   });
   try {
     await newEmployee.save();
@@ -51,6 +54,7 @@ router.put("/edit/:id", async (req, res) => {
     level,
     equipment,
     amount,
+    income,
   } = req.body.data;
   await Employee.findByIdAndUpdate(
     { _id: req.params.id },
@@ -63,6 +67,7 @@ router.put("/edit/:id", async (req, res) => {
         level: level,
         equipment: equipment,
         amount: amount,
+        income: income,
       },
     }
   )

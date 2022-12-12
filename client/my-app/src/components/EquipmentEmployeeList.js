@@ -13,6 +13,8 @@ const EquipmentEmployeeList = () => {
   useEffect(() => {
     fetchEmployeeEquipmentList(setData);
   }, []);
+
+  console.log(data);
   return (
     <div>
       {data === [] ? (
@@ -25,7 +27,13 @@ const EquipmentEmployeeList = () => {
                 {data.firstName} <strong>Equipment:</strong>
                 <span>{data.equipment.name}</span>
                 <strong>Amount:</strong>
-                <span>{data.amount}</span>
+                <span>{data.amount} </span>
+                <stron>Income:</stron>
+                {data.income === undefined ? (
+                  <span>{"no income yet"}</span>
+                ) : (
+                  <span>{data.income}€</span>
+                )}
               </li>
             );
           })}

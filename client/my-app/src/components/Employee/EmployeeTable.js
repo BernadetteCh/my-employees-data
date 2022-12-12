@@ -15,6 +15,7 @@ const EmployeeTable = ({ employeesData, updateBothTables }) => {
           <th>LastName</th>
           <th>Position</th>
           <th>Level</th>
+          <th>Income</th>
           <th>Action</th>
         </tr>
       </thead>

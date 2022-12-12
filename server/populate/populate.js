@@ -2,10 +2,18 @@ require("dotenv").config();
 const mongoose = require("mongoose");
 const defaultEmployeesData = require("../populate/defaultEmployeesData.json");
 const employeeSchema = require("../db/employeeSchema");
+const incomeSchema = require("../db/incomeSchema");
 
+const income = [
+  { seniorDeveloper: 3500 },
+  { juniorDeveloper: 2500 },
+  { intern: 1000 },
+];
 const populateData = async () => {
   await employeeSchema.deleteMany({});
+  await incomeSchema.deleteMany({});
   await employeeSchema.create(...defaultEmployeesData.data);
+  await incomeSchema.create(...income);
   console.log("Employees created");
 };
 
