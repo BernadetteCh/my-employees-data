@@ -8,11 +8,23 @@ const EquipmentTableRow = ({
   myKey,
   updateEquipmentData,
 }) => {
-  const deleteEquipment = () => {
-    const newEquipmentList = [...equipments];
-    newEquipmentList.splice(myKey, 1);
-    updateEquipmentData(newEquipmentList);
+  const deleteEquipment = async () => {
+    console.log(equipment._id);
+    const url = `http://localhost:8080/equipment/delete/${equipment._id}`;
+    const response = await fetch(`${url}`, {
+      method: "DELETE",
+      headers: {
+        "Content-type": "application/json",
+      },
+    });
+    if (!response.ok) {
+      console.log(`Èrror:${response.status}`);
+    } else {
+      const data = await response.json();
+      updateEquipmentData(data);
+    }
   };
+
   return (
     <tr>
       <td>{equipment.name}</td>
