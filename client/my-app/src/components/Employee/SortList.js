@@ -2,6 +2,15 @@ import React from "react";
 import Option from "../Option";
 
 const SortList = ({ updateData }) => {
+  const sortOptions = [
+    {
+      sort: "firstName",
+    },
+    { sort: "secondName" },
+    { sort: "lastName" },
+    { sort: "position" },
+    { sort: "level" },
+  ];
   const sortList = async (e) => {
     const url = `http://localhost:8080/api/${e.target.value}`;
     const response = await fetch(`${url}`);
@@ -16,11 +25,9 @@ const SortList = ({ updateData }) => {
     <div>
       <select name="option" onChange={sortList}>
         <option defaultValue="select">Select</option>
-        <Option value={"firstName"} option={"FirstName"} />
-        <Option value={"secondName"} option={"SecondName"} />
-        <Option value={"lastName"} option={"LastName"} />
-        <Option value={"position"} option={"Position"} />
-        <Option value={"level"} option={"Level"} />
+        {sortOptions.map((sort) => {
+          return <Option value={sort.sort} option={sort.sort} />;
+        })}
       </select>
     </div>
   );

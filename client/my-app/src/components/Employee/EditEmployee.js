@@ -7,6 +7,13 @@ import Option from "../Option";
 
 const EditEmployee = () => {
   const [data, setData] = useState([]);
+  const selectPosition = [
+    {
+      position: "intern",
+    },
+    { position: "junior-developer" },
+    { position: "senior-developer" },
+  ];
 
   const navigate = useNavigate();
   const params = useParams();
@@ -104,7 +111,17 @@ const EditEmployee = () => {
           }
         >
           <option defaultValue={data.level}>Select</option>
-          <Option value={"intern"} option={"intern"} name={"intern"} />
+          {selectPosition.map((position, index) => {
+            return (
+              <Option
+                key={index}
+                value={position.position}
+                name={position.position}
+                option={position.position}
+              />
+            );
+          })}
+          {/* <Option value={"intern"} option={"intern"} name={"intern"} />
           <Option
             value={"junior-developer"}
             option={"Junior Developer"}
@@ -114,7 +131,7 @@ const EditEmployee = () => {
             value={"senior-developer"}
             option={"Senior Developer"}
             name={"senior-developer"}
-          />
+          /> */}
         </select>
         <Button type="submit" className="d-block mt-5" onClick={editEmployee}>
           Edit
