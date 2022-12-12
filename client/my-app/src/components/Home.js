@@ -48,6 +48,7 @@ const Home = () => {
     setEmployeeData(employees, setEquipmentData(equipments));
   };
 
+  console.log(employeeData);
   return (
     <div>
       <h1 style={{ textAlign: "center" }}>My Employees Data 🙃🍀</h1>

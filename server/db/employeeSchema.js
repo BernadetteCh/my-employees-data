@@ -12,6 +12,8 @@ const employeeSchema = new mongoose.Schema({
     required: true,
   },
   amount: Number,
+  incomes: String,
+  age: String,
 });
 
 module.exports = mongoose.model("employees", employeeSchema);
