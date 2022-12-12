@@ -11,6 +11,7 @@ const fetchEquipmentData = async (dataSetter) => {
   const data = await response.json();
   dataSetter(data);
 };
+
 const CreateEmployee = () => {
   const [inputValue, setInputValue] = useState({
     firstName: "",
