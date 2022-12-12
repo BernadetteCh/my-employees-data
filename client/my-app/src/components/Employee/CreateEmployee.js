@@ -23,6 +23,7 @@ const CreateEmployee = () => {
     amount: 0,
   });
   const [equipmentData, setEquipmentData] = useState([]);
+
   const [max, setMax] = useState(0);
   const navigate = useNavigate();
 
@@ -185,6 +186,7 @@ const CreateEmployee = () => {
                 );
               })}
         </select>
+
         <Input
           min={0}
           max={max}

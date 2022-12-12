@@ -25,9 +25,11 @@ main();
 
 const employeesRouter = require("./routes/employee-router");
 const equipmentRouter = require("./routes/equipment-router");
+const paRouter = require("./routes/paRouter");
 
 app.use("/api", employeesRouter);
 app.use("/equipment", equipmentRouter);
+app.use("/income/age", paRouter);
 
 app.listen(port);
 console.log("http://localhost:" + port);

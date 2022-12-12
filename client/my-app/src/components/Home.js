@@ -8,7 +8,7 @@ import EquipmentTable from "../components/Equipment/EquipmentTable";
 const fetchEmployeesData = async (dataSetter) => {
   const response = await fetch("http://localhost:8080/api");
   const data = await response.json();
-
+  console.log(data);
   if (!response.ok) {
     console.log(`Error:${response.status} ${response.statusText}`);
   }
@@ -37,6 +37,8 @@ const Home = () => {
 
     fetchData();
   }, []);
+
+  console.log(employeeData);
 
   const updateEmployeeData = (data) => {
     setEmployeeData(data);
