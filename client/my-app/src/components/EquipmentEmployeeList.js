@@ -26,6 +26,8 @@ const EquipmentEmployeeList = () => {
                 <span>{data.equipment.name}</span>
                 <strong>Amount:</strong>
                 <span>{data.amount}</span>
+                <strong>Comment:</strong>
+                <span>{data.comment}</span>
               </li>
             );
           })}

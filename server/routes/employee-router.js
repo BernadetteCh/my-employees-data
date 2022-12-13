@@ -41,6 +41,16 @@ router.post("/save/newemployee", async (req, res) => {
     res.status(400).send(error);
   }
 });
+router.put("/comment/:id", async (req, res) => {
+  console.log(req.params.id);
+  console.log(req.body.comment);
+  const b = await Employee.updateOne(
+    { _id: req.params.id },
+    { $set: { comment: req.body.comment } },
+    { multi: true }
+  );
+  console.log(b);
+});
 
 router.put("/edit/:id", async (req, res) => {
   const {
