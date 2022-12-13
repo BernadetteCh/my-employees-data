@@ -25,8 +25,8 @@ const SortList = ({ updateData }) => {
     <div>
       <select name="option" onChange={sortList}>
         <option defaultValue="select">Select</option>
-        {sortOptions.map((sort) => {
-          return <Option value={sort.sort} option={sort.sort} />;
+        {sortOptions.map((sort, index) => {
+          return <Option value={sort.sort} option={sort.sort} key={index} />;
         })}
       </select>
     </div>
