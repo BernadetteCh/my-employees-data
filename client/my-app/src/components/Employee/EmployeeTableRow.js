@@ -2,9 +2,9 @@ import React from "react";
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
 
-const TableRow = ({ employee, employees, myKey, updateBothTables }) => {
+const TableRow = ({ employee, employees, myKey, index, updateBothTables }) => {
   const deleteEmployee = async () => {
-    const id = employee._id;
+    // const id = employee._id;
     const putUrl = `http://localhost:8080/equipment/updateEquipment/deleteEmployee`;
     const putresponse = await fetch(`${putUrl}`, {
       method: "PUT",
@@ -17,7 +17,7 @@ const TableRow = ({ employee, employees, myKey, updateBothTables }) => {
       }),
     });
 
-    const url = `http://localhost:8080/api/delete/${id}`;
+    const url = `http://localhost:8080/api/delete/${myKey}`;
     const response = await fetch(`${url}`, {
       method: "DELETE",
       headers: {
@@ -33,7 +33,7 @@ const TableRow = ({ employee, employees, myKey, updateBothTables }) => {
       console.log(`Error: ${response.status} ${response.statusText}`);
     } else {
       const newEmployeesData = [...employees];
-      newEmployeesData.splice(myKey, 1);
+      newEmployeesData.splice(index, 1);
       const newEquipmentAmountData = await putresponse.json();
       updateBothTables(newEmployeesData, newEquipmentAmountData);
     }
@@ -47,7 +47,7 @@ const TableRow = ({ employee, employees, myKey, updateBothTables }) => {
       <td>{employee.position}</td>
       <td>{employee.level}</td>
       <td>
-        <Link to={`/edit/${employee._id}`}>Edit</Link> |
+        <Link to={`/edit/${myKey}`}>Edit</Link> |
         <Button variant="secondary" type="submit" onClick={deleteEmployee}>
           Delete
         </Button>

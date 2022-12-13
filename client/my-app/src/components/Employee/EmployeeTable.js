@@ -27,7 +27,8 @@ const EmployeeTable = ({ employeesData, updateBothTables }) => {
                   employee={employee}
                   employees={employeesData}
                   key={employee._id}
-                  myKey={index}
+                  myKey={employee._id}
+                  index={index}
                   updateBothTables={updateBothTablesData}
                 />
               );
