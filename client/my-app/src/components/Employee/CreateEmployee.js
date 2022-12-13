@@ -21,6 +21,7 @@ const CreateEmployee = () => {
     level: "",
     equipment: "",
     amount: 0,
+    date: "",
   });
   const [equipmentData, setEquipmentData] = useState([]);
   const [max, setMax] = useState(0);
@@ -37,7 +38,9 @@ const CreateEmployee = () => {
   const selectEquipment = (e) => {
     setMaxAmount(e.target.value);
   };
-
+  const selectDate = (e) => {
+    setInputValue((prev) => ({ ...prev, date: e.target.value }));
+  };
   const setMaxAmount = (value) => {
     equipmentData.map((equipment) => {
       if (equipment._id === value) {
@@ -107,11 +110,12 @@ const CreateEmployee = () => {
       level: "",
       equipment: "",
       amount: 0,
+      date: "",
     });
 
     navigate("/");
   };
-
+  console.log(inputValue);
   return (
     <div className="form-create">
       <h2>Create a new Employee</h2>
@@ -194,6 +198,12 @@ const CreateEmployee = () => {
           type="number"
           name="amount"
           upDateInputValue={upDateAmountOfEquipment}
+        />
+        <label>Date of Creation:</label>
+        <Input
+          type={"datetime-local"}
+          value={inputValue.date}
+          upDateInputValue={selectDate}
         />
         <Button type="submit" className="submit-button" onClick={saveData}>
           Create new Employee
