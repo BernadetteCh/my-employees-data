@@ -6,11 +6,11 @@ const EquipmentTableRow = ({
   equipment,
   equipments,
   myKey,
+  index,
   updateEquipmentData,
 }) => {
   const deleteEquipment = async () => {
-    console.log(equipment._id);
-    const url = `http://localhost:8080/equipment/delete/${equipment._id}`;
+    const url = `http://localhost:8080/equipment/delete/${myKey}`;
     const response = await fetch(`${url}`, {
       method: "DELETE",
       headers: {
@@ -31,7 +31,7 @@ const EquipmentTableRow = ({
       <td>{equipment.type}</td>
       <td>{equipment.amount}</td>
       <td>
-        <Link to={`/edit/equipment/${equipment._id}`}>Edit</Link> |
+        <Link to={`/edit/equipment/${myKey}`}>Edit</Link> |
         <Button onClick={deleteEquipment}>Delete</Button>
       </td>
     </tr>
