@@ -25,7 +25,9 @@ main();
 
 const employeesRouter = require("./routes/employee-router");
 const equipmentRouter = require("./routes/equipment-router");
+const mainRouter = require("./routes/mainRouter");
 
+app.use("/", mainRouter);
 app.use("/api", employeesRouter);
 app.use("/equipment", equipmentRouter);
 
