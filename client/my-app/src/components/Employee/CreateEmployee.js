@@ -63,6 +63,7 @@ const CreateEmployee = () => {
 
   const saveData = async (e) => {
     e.preventDefault();
+    console.log(inputValue);
     const url = "http://localhost:8080/api/save/newemployee";
     const response = await fetch(`${url}`, {
       method: "POST",
@@ -73,6 +74,7 @@ const CreateEmployee = () => {
         inputValue,
       }),
     });
+
     const putUrl = `http://localhost:8080/equipment/upDateEquipment/createEmployee`;
     const putResponse = await fetch(`${putUrl}`, {
       method: "PUT",
