@@ -70,6 +70,23 @@ router.get("/edit/equipment/:id", async (req, res) => {
       res.status(400).json({ error });
     });
 });
+
+router.put("/comment/:id", async (req, res) => {
+  const comment = await Equipment.updateOne(
+    { _id: req.params.id },
+    { $set: { comment: req.body.comment } },
+    { multi: true }
+  );
+  res.status(200).json(comment);
+});
+
+router.get("/comment/:id", async (req, res) => {
+  console.log(req.params.id);
+  await Equipment.find({ _id: req.params.id }).then((result) => {
+    console.log(result);
+    res.status(200).json(result);
+  });
+});
 router.get("/sort/:key/:method", async (req, res) => {
   if (req.params.method === "ascending") {
     await Equipment.find()

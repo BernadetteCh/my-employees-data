@@ -80,7 +80,7 @@ const EquipmentTable = ({
                   equipment={equipment}
                   equipments={equipmentData}
                   key={equipment._id}
-                  myKey={index}
+                  myKey={equipment._id}
                   updateEquipmentData={updateEquipmentList}
                 />
               );

@@ -8,6 +8,7 @@ const Input = ({
   min,
   max,
   autoFocus,
+  placeholder,
 }) => {
   return (
     <input
@@ -16,6 +17,7 @@ const Input = ({
       min={min}
       max={max}
       value={value}
+      placeholder={placeholder}
       autoFocus={autoFocus}
       onChange={upDateInputValue}
     ></input>
