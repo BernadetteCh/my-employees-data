@@ -21,6 +21,7 @@ const CreateEmployee = () => {
     level: "",
     equipment: "",
     amount: 0,
+    years: 0,
   });
   const [equipmentData, setEquipmentData] = useState([]);
   const [max, setMax] = useState(0);
@@ -31,6 +32,8 @@ const CreateEmployee = () => {
   }, []);
 
   const upDateInputValue = (e) => {
+    // console.log(e.target.name);
+    // console.log(e.taget.value);
     setInputValue((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
@@ -60,7 +63,12 @@ const CreateEmployee = () => {
       amount: e.target.value,
     }));
   };
-
+  const saveWorkingYears = (e) => {
+    setInputValue((prev) => ({
+      ...prev,
+      years: e.target.value,
+    }));
+  };
   const saveData = async (e) => {
     e.preventDefault();
     console.log(inputValue);
@@ -107,100 +115,204 @@ const CreateEmployee = () => {
       level: "",
       equipment: "",
       amount: 0,
+      years: 0,
     });
 
     navigate("/");
   };
+  console.log(inputValue.level);
+  if (inputValue.level === "junior-developer") {
+    return (
+      <div className="form-create">
+        <h2>Create a new Employee</h2>
+        <form>
+          <label className="d-block">FirstName:</label>
+          <Input
+            type="text"
+            name="firstName"
+            value={inputValue.firstName}
+            upDateInputValue={upDateInputValue}
+          />
+          <label className="d-block">SecondName:</label>
+          <Input
+            type="text"
+            name="secondName"
+            value={inputValue.secondName}
+            upDateInputValue={upDateInputValue}
+          />
+          <label className="d-block">LastName:</label>
+          <Input
+            type="text"
+            name="lastName"
+            value={inputValue.lastName}
+            upDateInputValue={upDateInputValue}
+          />
+          <label className="d-block">Position:</label>
+          <Input
+            type="text"
+            name="position"
+            value={inputValue.position}
+            upDateInputValue={upDateInputValue}
+          />
+          <label className="d-block">Level:</label>
+          <Input
+            type="radio"
+            name="level"
+            value="intern"
+            upDateInputValue={upDateInputValue}
+          />
+          <label htmlFor="intern" className="me-5">
+            Intern
+          </label>
+          <Input
+            type="radio"
+            name="level"
+            value="junior-developer"
+            upDateInputValue={upDateInputValue}
+          />
+          <label htmlFor="junior-developer" className="me-5">
+            Junior Developer
+          </label>
+          <Input
+            type="radio"
+            name="level"
+            value="senior-developer"
+            upDateInputValue={upDateInputValue}
+          />
+          <label htmlFor="senior-developer" className="me-5">
+            Senior Developer
+          </label>
+          <label className="d-block">
+            Select an Equipment for an Employee:
+          </label>
+          <select className="me-5" onChange={selectEquipment}>
+            <option defaultValue={"select"}>--Select--</option>
+            {equipmentData === []
+              ? console.log("...Loading")
+              : equipmentData.map((equipment, index) => {
+                  return (
+                    <Option
+                      value={equipment._id}
+                      option={equipment.name}
+                      key={index}
+                    />
+                  );
+                })}
+          </select>
+          <Input
+            min={0}
+            max={max}
+            value={inputValue.amount}
+            type="number"
+            name="amount"
+            upDateInputValue={upDateAmountOfEquipment}
+          />
 
-  return (
-    <div className="form-create">
-      <h2>Create a new Employee</h2>
-      <form>
-        <label className="d-block">FirstName:</label>
-        <Input
-          type="text"
-          name="firstName"
-          value={inputValue.firstName}
-          upDateInputValue={upDateInputValue}
-        />
-        <label className="d-block">SecondName:</label>
-        <Input
-          type="text"
-          name="secondName"
-          value={inputValue.secondName}
-          upDateInputValue={upDateInputValue}
-        />
-        <label className="d-block">LastName:</label>
-        <Input
-          type="text"
-          name="lastName"
-          value={inputValue.lastName}
-          upDateInputValue={upDateInputValue}
-        />
-        <label className="d-block">Position:</label>
-        <Input
-          type="text"
-          name="position"
-          value={inputValue.position}
-          upDateInputValue={upDateInputValue}
-        />
-        <label className="d-block">Level:</label>
-        <Input
-          type="radio"
-          name="level"
-          value="intern"
-          upDateInputValue={upDateInputValue}
-        />
-        <label htmlFor="intern" className="me-5">
-          Intern
-        </label>
-        <Input
-          type="radio"
-          name="level"
-          value="junior-developer"
-          upDateInputValue={upDateInputValue}
-        />
-        <label htmlFor="junior-developer" className="me-5">
-          Junior Developer
-        </label>
-        <Input
-          type="radio"
-          name="level"
-          value="junior-developer"
-          upDateInputValue={upDateInputValue}
-        />
-        <label htmlFor="senior-developer" className="me-5">
-          Senior Developer
-        </label>
-        <label className="d-block">Select an Equipment for an Employee:</label>
-        <select className="me-5" onChange={selectEquipment}>
-          <option defaultValue={"select"}>--Select--</option>
-          {equipmentData === []
-            ? console.log("...Loading")
-            : equipmentData.map((equipment, index) => {
-                return (
-                  <Option
-                    value={equipment._id}
-                    option={equipment.name}
-                    key={index}
-                  />
-                );
-              })}
-        </select>
-        <Input
-          min={0}
-          max={max}
-          value={inputValue.amount}
-          type="number"
-          name="amount"
-          upDateInputValue={upDateAmountOfEquipment}
-        />
-        <Button type="submit" className="submit-button" onClick={saveData}>
-          Create new Employee
-        </Button>
-      </form>
-    </div>
-  );
+          <Button type="submit" className="submit-button" onClick={saveData}>
+            Create new Employee
+          </Button>
+        </form>
+      </div>
+    );
+  } else {
+    return (
+      <div className="form-create">
+        <h2>Create a new Employee</h2>
+        <form>
+          <label className="d-block">FirstName:</label>
+          <Input
+            type="text"
+            name="firstName"
+            value={inputValue.firstName}
+            upDateInputValue={upDateInputValue}
+          />
+          <label className="d-block">SecondName:</label>
+          <Input
+            type="text"
+            name="secondName"
+            value={inputValue.secondName}
+            upDateInputValue={upDateInputValue}
+          />
+          <label className="d-block">LastName:</label>
+          <Input
+            type="text"
+            name="lastName"
+            value={inputValue.lastName}
+            upDateInputValue={upDateInputValue}
+          />
+          <label className="d-block">Position:</label>
+          <Input
+            type="text"
+            name="position"
+            value={inputValue.position}
+            upDateInputValue={upDateInputValue}
+          />
+          <label className="d-block">Level:</label>
+          <Input
+            type="radio"
+            name="level"
+            value="intern"
+            upDateInputValue={upDateInputValue}
+          />
+          <label htmlFor="intern" className="me-5">
+            Intern
+          </label>
+          <Input
+            type="radio"
+            name="level"
+            value="junior-developer"
+            upDateInputValue={upDateInputValue}
+          />
+          <label htmlFor="junior-developer" className="me-5">
+            Junior Developer
+          </label>
+          <Input
+            type="radio"
+            name="level"
+            value="junior-developer"
+            upDateInputValue={upDateInputValue}
+          />
+          <label htmlFor="senior-developer" className="me-5">
+            Senior Developer
+          </label>
+          <label className="d-block">
+            Select an Equipment for an Employee:
+          </label>
+          <select className="me-5" onChange={selectEquipment}>
+            <option defaultValue={"select"}>--Select--</option>
+            {equipmentData === []
+              ? console.log("...Loading")
+              : equipmentData.map((equipment, index) => {
+                  return (
+                    <Option
+                      value={equipment._id}
+                      option={equipment.name}
+                      key={index}
+                    />
+                  );
+                })}
+          </select>
+          <Input
+            min={0}
+            max={max}
+            value={inputValue.amount}
+            type="number"
+            name="amount"
+            upDateInputValue={upDateAmountOfEquipment}
+          />
+          <label className="d-block">Years of Experience:</label>
+          <Input
+            type="number "
+            value={inputValue.years}
+            upDateInputValue={saveWorkingYears}
+          />
+          <Button type="submit" className="submit-button" onClick={saveData}>
+            Create new Employee
+          </Button>
+        </form>
+      </div>
+    );
+  }
 };
 
 export default CreateEmployee;

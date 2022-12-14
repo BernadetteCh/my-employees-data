@@ -1,6 +1,7 @@
 import React from "react";
 
 const Input = ({ type, name, value, upDateInputValue, min, max }) => {
+  console.log(value);
   return (
     <input
       type={type}
