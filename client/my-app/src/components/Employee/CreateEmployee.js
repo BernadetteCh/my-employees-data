@@ -31,6 +31,7 @@ const CreateEmployee = () => {
   }, []);
 
   const upDateInputValue = (e) => {
+    console.log(e.target.value);
     setInputValue((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
@@ -166,7 +167,7 @@ const CreateEmployee = () => {
         <Input
           type="radio"
           name="level"
-          value="junior-developer"
+          value="senior-developer"
           upDateInputValue={upDateInputValue}
         />
         <label htmlFor="senior-developer" className="me-5">
