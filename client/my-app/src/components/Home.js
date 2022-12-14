@@ -58,6 +58,7 @@ const Home = () => {
       <EmployeeTable
         employeesData={employeeData}
         updateBothTables={updateBothTables}
+        updateData={updateEmployeeData}
       />
       <h2>Equipment Table</h2>
       <FilterEquipment updateData={updateEquipmentData} />
