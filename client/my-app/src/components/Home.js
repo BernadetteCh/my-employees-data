@@ -27,8 +27,8 @@ const fetchEquipmentData = async (dataSetter) => {
 };
 
 const Home = () => {
-  const [employeeData, setEmployeeData] = useState([]);
-  const [equipmentData, setEquipmentData] = useState([]);
+  const [employeeData, setEmployeeData] = useState();
+  const [equipmentData, setEquipmentData] = useState();
 
   useEffect(() => {
     const fetchData = async () => {

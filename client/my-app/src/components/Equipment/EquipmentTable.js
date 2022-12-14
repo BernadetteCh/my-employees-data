@@ -68,7 +68,7 @@ const EquipmentTable = ({ equipmentData, updateEquipmentData }) => {
         </tr>
       </thead>
       <tbody>
-        {equipmentData === []
+        {equipmentData === undefined
           ? console.log("..loading")
           : equipmentData.map((equipment, index) => {
               return (

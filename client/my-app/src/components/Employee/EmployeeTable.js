@@ -19,7 +19,7 @@ const EmployeeTable = ({ employeesData, updateBothTables, updateData }) => {
     <Table striped>
       <TableHead sortList={sortList} />
       <tbody>
-        {employeesData === []
+        {employeesData === undefined
           ? console.log("..loading")
           : employeesData.map((employee, index) => {
               return (
