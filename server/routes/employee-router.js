@@ -24,6 +24,7 @@ router.post("/save/newemployee", async (req, res) => {
     level,
     equipment,
     amount,
+    present,
   } = req.body.inputValue;
   const newEmployee = new Employee({
     firstName: firstName,
@@ -33,6 +34,7 @@ router.post("/save/newemployee", async (req, res) => {
     level: level,
     equipment: equipment,
     amount: amount,
+    present: present,
   });
   try {
     await newEmployee.save();
@@ -40,6 +42,16 @@ router.post("/save/newemployee", async (req, res) => {
   } catch (error) {
     res.status(400).send(error);
   }
+});
+router.put("/attendance/:id", async (req, res) => {
+  console.log(req.body);
+  console.log(req.params.id);
+  await Employee.findByIdAndUpdate(
+    { _id: req.params.id },
+    { $set: { present: req.body.present } }
+  ).then((result) => {
+    res.status(200).json(result);
+  });
 });
 
 router.put("/edit/:id", async (req, res) => {

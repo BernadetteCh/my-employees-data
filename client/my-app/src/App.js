@@ -8,6 +8,7 @@ import Home from "../src/components/Home";
 import EditEmployee from "./components/Employee/EditEmployee";
 import EditEquipment from "./components/Equipment/EditEquipment";
 import EquipmentEmployeeList from "./components/EquipmentEmployeeList";
+import Attendance from "./components/Attendance";
 import "./App.css";
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
             element={<EquipmentEmployeeList />}
           ></Route>
           <Route path="/edit/:id" element={<EditEmployee />}></Route>
+          <Route path="/attendance" element={<Attendance />}></Route>
         </Routes>
       </BrowserRouter>
     </div>

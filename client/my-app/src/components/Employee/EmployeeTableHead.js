@@ -83,6 +83,7 @@ const EmployeeTableHead = ({ sortList }) => {
             ⬇
           </button>
         </th>
+        <th>Morning Attendance</th>
         <th>Action</th>
       </tr>
     </thead>

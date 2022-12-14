@@ -12,6 +12,7 @@ const employeeSchema = new mongoose.Schema({
     required: true,
   },
   amount: Number,
+  present: { type: Boolean, default: false },
 });
 
 module.exports = mongoose.model("employees", employeeSchema);
