@@ -33,7 +33,7 @@ const CreateEmployee = () => {
 
   const upDateInputValue = (e) => {
     // console.log(e.target.name);
-    // console.log(e.taget.value);
+    console.log(e.taget.value);
     setInputValue((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
@@ -176,7 +176,7 @@ const CreateEmployee = () => {
           <Input
             type="radio"
             name="level"
-            value="senior-developer"
+            value="junior-developer"
             upDateInputValue={upDateInputValue}
           />
           <label htmlFor="senior-developer" className="me-5">
@@ -207,7 +207,6 @@ const CreateEmployee = () => {
             name="amount"
             upDateInputValue={upDateAmountOfEquipment}
           />
-
           <Button type="submit" className="submit-button" onClick={saveData}>
             Create new Employee
           </Button>
@@ -306,6 +305,7 @@ const CreateEmployee = () => {
             value={inputValue.years}
             upDateInputValue={saveWorkingYears}
           />
+
           <Button type="submit" className="submit-button" onClick={saveData}>
             Create new Employee
           </Button>
