@@ -3,11 +3,7 @@ import Table from "react-bootstrap/Table";
 import EquipmentTableRow from "./EquipmentTableRow";
 import "../../App.css";
 
-const EquipmentTable = ({
-  equipmentData,
-  updateEquipmentData,
-  employeeData,
-}) => {
+const EquipmentTable = ({ equipmentData, updateEquipmentData }) => {
   const updateEquipmentList = (data) => {
     updateEquipmentData(data);
   };

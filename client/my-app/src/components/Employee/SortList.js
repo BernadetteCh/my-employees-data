@@ -14,11 +14,12 @@ const SortList = ({ updateData }) => {
   const sortList = async (e) => {
     const url = `http://localhost:8080/api/${e.target.value}`;
     const response = await fetch(`${url}`);
-    const data = await response.json();
     if (!response.ok) {
       console.log(`Error : ${response.status} ${response.statusText}`);
+    } else {
+      const data = await response.json();
+      updateData(data);
     }
-    updateData(data);
   };
 
   return (

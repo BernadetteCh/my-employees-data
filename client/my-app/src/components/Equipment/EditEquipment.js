@@ -15,12 +15,13 @@ const EditEquipment = () => {
   useEffect(() => {
     const fetchEquipmentData = async () => {
       const response = await fetch(`${url}`);
-      const data = await response.json();
 
       if (!response.ok) {
         console.log(`Error: ${response.status}`);
+      } else {
+        const data = await response.json();
+        setEquipmentData(data);
       }
-      setEquipmentData(data);
     };
     fetchEquipmentData();
   }, [id]);

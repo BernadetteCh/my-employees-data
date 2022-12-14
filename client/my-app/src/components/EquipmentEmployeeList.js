@@ -9,14 +9,14 @@ const fetchEmployeeEquipmentList = async (dataSetter) => {
 };
 
 const EquipmentEmployeeList = () => {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState();
   useEffect(() => {
     fetchEmployeeEquipmentList(setData);
   }, []);
   return (
     <div>
-      {data === [] ? (
-        console.log("HI")
+      {data === undefined ? (
+        console.log("..loading")
       ) : (
         <ul>
           {data.map((data) => {

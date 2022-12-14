@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 
 const TableRow = ({ employee, employees, myKey, index, updateBothTables }) => {
   const deleteEmployee = async () => {
-    // const id = employee._id;
     const putUrl = `http://localhost:8080/equipment/updateEquipment/deleteEmployee`;
     const putresponse = await fetch(`${putUrl}`, {
       method: "PUT",
@@ -30,7 +29,7 @@ const TableRow = ({ employee, employees, myKey, index, updateBothTables }) => {
       console.log(`Error: ${putresponse.status} ${putresponse.statusText}`);
     }
     if (!response.ok) {
-      console.log(`Error: ${response.status} ${response.statusText}`);
+      console.log(`asdfasdfError: ${response.status} ${response.statusText}`);
     } else {
       const newEmployeesData = [...employees];
       newEmployeesData.splice(index, 1);

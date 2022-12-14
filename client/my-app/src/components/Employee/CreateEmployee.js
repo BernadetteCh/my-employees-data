@@ -8,8 +8,12 @@ import Option from "../Option";
 const fetchEquipmentData = async (dataSetter) => {
   const url = "http://localhost:8080/equipment";
   const response = await fetch(`${url}`);
-  const data = await response.json();
-  dataSetter(data);
+  if (!response.ok) {
+    console.log(`${response.status}`);
+  } else {
+    const data = await response.json();
+    dataSetter(data);
+  }
 };
 
 const CreateEmployee = () => {

@@ -23,12 +23,12 @@ const EditEmployee = () => {
   useEffect(() => {
     const fetchData = async () => {
       const response = await fetch(`${url}`);
-      const data = await response.json();
-
       if (!response.ok) {
-        console.log(`Error: ${response.status} ${response.statusText}`);
+        console.log(`${response.status}`);
+      } else {
+        const data = await response.json();
+        setData(data);
       }
-      setData(data);
     };
     fetchData();
   }, [id]);
