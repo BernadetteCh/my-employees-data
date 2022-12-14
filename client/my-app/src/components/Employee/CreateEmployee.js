@@ -176,7 +176,7 @@ const CreateEmployee = () => {
           <Input
             type="radio"
             name="level"
-            value="junior-developer"
+            value="senior-developer"
             upDateInputValue={upDateInputValue}
           />
           <label htmlFor="senior-developer" className="me-5">
