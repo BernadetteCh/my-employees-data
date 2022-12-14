@@ -7,12 +7,13 @@ import EquipmentTable from "../components/Equipment/EquipmentTable";
 
 const fetchEmployeesData = async (dataSetter) => {
   const response = await fetch("http://localhost:8080/api");
-  const data = await response.json();
-
   if (!response.ok) {
-    console.log(`Error:${response.status} ${response.statusText}`);
+    console.log("not okay");
+  } else {
+    console.log("ok");
+    const data = await response.json();
+    dataSetter(data);
   }
-  dataSetter(data);
 };
 
 const fetchEquipmentData = async (dataSetter) => {
