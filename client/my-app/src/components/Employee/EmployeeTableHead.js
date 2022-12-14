@@ -83,6 +83,21 @@ const EmployeeTableHead = ({ sortList }) => {
             ⬇
           </button>
         </th>
+        <th>
+          Years
+          <button
+            className="sortButton"
+            onClick={() => sortEmployee("years", "ascending")}
+          >
+            ⬆
+          </button>
+          <button
+            className="sortButton"
+            onClick={() => sortEmployee("years", "descending")}
+          >
+            ⬇
+          </button>
+        </th>
         <th>Action</th>
       </tr>
     </thead>

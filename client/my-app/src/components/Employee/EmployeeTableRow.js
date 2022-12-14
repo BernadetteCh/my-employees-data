@@ -46,6 +46,7 @@ const TableRow = ({ employee, employees, myKey, index, updateBothTables }) => {
       <td>{employee.lastName}</td>
       <td>{employee.position}</td>
       <td>{employee.level}</td>
+      <td>{employee.years}</td>
       <td>
         <Link to={`/edit/${myKey}`}>Edit</Link> |
         <Button variant="secondary" type="submit" onClick={deleteEmployee}>
