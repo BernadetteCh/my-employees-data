@@ -93,6 +93,27 @@ router.get("/:sortValue", async (req, res) => {
       res.send(400).json({ error });
     });
 });
+
+router.get("/sort/:key/:method", async (req, res) => {
+  if (req.params.method === "ascending") {
+    await Employee.find()
+      .sort({ [req.params.key]: 1 })
+      .then((result) => {
+        res.status(200).json(result);
+      });
+  } else if (req.params.method === "descending") {
+    await Employee.find()
+      .sort({ [req.params.key]: -1 })
+      .then((result) => {
+        res.status(200).json(result);
+      });
+  } else {
+    await Employee.find().then((result) => {
+      res.json(result);
+    });
+  }
+});
+
 router.get("/edit/:id", async (req, res) => {
   await Employee.findById({ _id: req.params.id })
     .then((result) => {
