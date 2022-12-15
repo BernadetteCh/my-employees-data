@@ -48,6 +48,7 @@ const Home = () => {
   const updateBothTables = (employees, equipments) => {
     setEmployeeData(employees, setEquipmentData(equipments));
   };
+  console.log(employeeData);
 
   return (
     <div>

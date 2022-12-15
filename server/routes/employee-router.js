@@ -24,6 +24,7 @@ router.post("/save/newemployee", async (req, res) => {
     level,
     equipment,
     amount,
+    totalsum,
   } = req.body.inputValue;
   const newEmployee = new Employee({
     firstName: firstName,
@@ -33,6 +34,7 @@ router.post("/save/newemployee", async (req, res) => {
     level: level,
     equipment: equipment,
     amount: amount,
+    totalsum: totalsum,
   });
   try {
     await newEmployee.save();

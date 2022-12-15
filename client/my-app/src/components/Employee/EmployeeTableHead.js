@@ -83,6 +83,7 @@ const EmployeeTableHead = ({ sortList }) => {
             ⬇
           </button>
         </th>
+        <th>TotalSum</th>
         <th>Action</th>
       </tr>
     </thead>
