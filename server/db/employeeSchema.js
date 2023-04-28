@@ -12,7 +12,6 @@ const employeeSchema = new mongoose.Schema({
     required: true,
   },
   amount: Number,
-  totalsum: String,
 });
 
 module.exports = mongoose.model("employees", employeeSchema);
