@@ -15,12 +15,7 @@ const fetchEquipmentData = async (dataSetter) => {
     dataSetter(data);
   }
 };
-const fetchPositionsData = async (dataSetter) => {
-  const url = "http://localhost:8080/positions";
-  const response = await fetch(`${url}`);
-  const data = await response.json();
-  dataSetter(data);
-};
+
 const CreateEmployee = () => {
   const [inputValue, setInputValue] = useState({
     firstName: "",
@@ -32,14 +27,12 @@ const CreateEmployee = () => {
     amount: 0,
   });
   const [equipmentData, setEquipmentData] = useState([]);
-  const [positionsData, setPositionsData] = useState();
   const [max, setMax] = useState(0);
   const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
       await fetchEquipmentData(setEquipmentData);
-      await fetchPositionsData(setPositionsData);
     };
 
     fetchData();
@@ -51,12 +44,6 @@ const CreateEmployee = () => {
 
   const selectEquipment = (e) => {
     setMaxAmount(e.target.value);
-  };
-  const selectPosition = (e) => {
-    setInputValue((prev) => ({
-      ...prev,
-      position: e.target.value,
-    }));
   };
 
   const setMaxAmount = (value) => {
@@ -129,7 +116,6 @@ const CreateEmployee = () => {
       level: "",
       equipment: "",
       amount: 0,
-      totalsum: 0,
     });
 
     navigate("/");
@@ -211,22 +197,6 @@ const CreateEmployee = () => {
           name="amount"
           upDateInputValue={upDateAmountOfEquipment}
         />
-        <label className="d-block">Select Position</label>
-        <select className="me-5" onChange={selectPosition}>
-          <option defaultValue={"select"}>--Select---</option>
-          {positionsData === undefined
-            ? console.log("..loading")
-            : positionsData.map((position, index) => {
-                console.log(position);
-                return (
-                  <Option
-                    value={position.name}
-                    option={position.name}
-                    key={index}
-                  />
-                );
-              })}
-        </select>
         <Button type="submit" className="submit-button" onClick={saveData}>
           Create new Employee
         </Button>
