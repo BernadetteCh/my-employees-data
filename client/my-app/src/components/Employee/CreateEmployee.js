@@ -30,7 +30,6 @@ const CreateEmployee = () => {
     level: "",
     equipment: "",
     amount: 0,
-    totalSum: 0,
   });
   const [equipmentData, setEquipmentData] = useState([]);
   const [positionsData, setPositionsData] = useState();
@@ -47,7 +46,6 @@ const CreateEmployee = () => {
   }, []);
 
   const upDateInputValue = (e) => {
-    console.log(e.target.value);
     setInputValue((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
@@ -55,13 +53,9 @@ const CreateEmployee = () => {
     setMaxAmount(e.target.value);
   };
   const selectPosition = (e) => {
-    const sum = positionsData.map((position) => {
-      return parseInt(position.salary) * parseInt(position.overbudget);
-    });
     setInputValue((prev) => ({
       ...prev,
       position: e.target.value,
-      totalsum: sum,
     }));
   };
 
@@ -140,7 +134,7 @@ const CreateEmployee = () => {
 
     navigate("/");
   };
-
+  console.log(inputValue);
   return (
     <div className="form-create">
       <h2>Create a new Employee</h2>
