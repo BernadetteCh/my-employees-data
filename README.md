@@ -15,7 +15,7 @@ Technologies included: MongoDB, ExpressJS, React
 
 ### Instruction
 
-To use the programm correct, paste in you .env file your MONGO_URL to connect with your MongoDB compass and run the populate.js file with npm run populate.
+To use the programm correct, paste in you .env file your MONGO_URL to connect with your MongoDB compass and run the populate.js file with npm run populate. Then start your server with npm run dev and start the react app.
 
 #### CodeSnippets
 
